@@ -8,26 +8,59 @@ datasource db {
 }
 
 model User {
-  id            String   @id @default(auto()) @map("_id") @db.ObjectId //@map is specific to mongo db
-  email         String   @unique
-  name          String?
-  provider      String?
-  password      String?
-  createdAt     DateTime  @default(now())
-  active        Boolean         @default(false) //this is for the email verification it needs to be active true 
-  product       Product[]
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId //@map is specific to mongo db
+  email          String   @unique
+  name           String?  @unique
+  provider       String?
+  password       String?
+  createdAt      DateTime  @default(now())
+  active         Boolean         @default(false) //this is for the email verification it needs to be active true 
+  product        Product[]
+  favorite       Favorite[]
+  cartItem       CartItem[]
+  confirmedOrder ConfirmedOrder[]
 }
 
 model Product {
   id            String   @id @default(auto()) @map("_id") @db.ObjectId //@map is specific to mongo db
-  price Float
-  imageLink String
-  quantity Int
-  description String?
-  category Category
-  gender Gender
-  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
-  userId String? @db.ObjectId
+  price         Float
+  imageLink     String
+  quantity      Int
+  description   String?
+  category      Category
+  gender        Gender
+  user          User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+  userId        String? @db.ObjectId
+  favorite      Favorite[]
+  cartItem      CartItem[]
+}
+
+model Favorite {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId //@map is specific to mongo db
+  user          User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+  userId        String? @db.ObjectId
+  product       Product? @relation(fields: [userId], references: [id], onDelete: SetNull)
+  productId     String? @db.ObjectId
+}
+
+model CartItem {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId //@map is specific to mongo db
+  user          User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+  userId        String? @db.ObjectId
+  product       Product? @relation(fields: [userId], references: [id], onDelete: SetNull)
+  productId     String? @db.ObjectId
+  cartQuantity  Int
+  status        Status
+}
+
+model ConfirmedOrder {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId //@map is specific to mongo db
+  user          User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+  userId        String? @db.ObjectId
+}
+
+model ConfirmedItem{
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId //@map is specific to mongo db
 }
 
 enum Category {
@@ -52,4 +85,9 @@ enum Gender {
   Male
   Female
   Unisex
+}
+
+enum Status {
+  Ordered
+  Pending
 }
