@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url = env("MongoDBURL") // uses connection pooling
+}
+
+model User {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId //@map is specific to mongo db
+  email         String   @unique
+  name          String?
+  provider      String?
+  password      String?
+  createdAt     DateTime  @default(now())
+  active        Boolean         @default(false) //this is for the email verification it needs to be active true 
+  product       Product[]
+}
+
+model Product {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId //@map is specific to mongo db
+  price Float
+  imageLink String
+  quantity Int
+  description String?
+  category Category
+  gender Gender
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+  userId String? @db.ObjectId
+}
+
+enum Category {
+  Top
+  Bottom
+  Dress
+  ActiveWear
+  OuterWear
+  SwimWear
+  SleepWear
+  UnderWear
+  Accessory
+  Footwear
+  SeasonalWear
+  FormalWear
+  CasualWear
+  WorkWear
+  SepcialtyWear
+}
+
+enum Gender {
+  Male
+  Female
+  Unisex
+}
