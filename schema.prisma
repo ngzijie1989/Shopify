@@ -23,6 +23,7 @@ model User {
 
 model Product {
   id             String   @id @default(auto()) @map("_id") @db.ObjectId //@map is specific to mongo db
+  name           String
   price          Float
   imageLink      String
   quantity       Int
