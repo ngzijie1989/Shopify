@@ -25,7 +25,7 @@ model Product {
   id             String   @id @default(auto()) @map("_id") @db.ObjectId //@map is specific to mongo db
   name           String
   price          Float
-  imageLink      String
+  imageLink      String?
   quantity       Int
   description    String?
   category       Category
@@ -81,15 +81,8 @@ enum Category {
   DRESS
   ACTIVEWEAR
   OUTERWEAR
-  SWIMWEAR
-  SLEEPWEAR
-  UNDERWEAR
   ACCESSORY
   FOOTWEAR
-  SEASONALWEAR
-  FORMALWEAR
-  CASUALWEAR
-  WORKWEAR
 }
 
 enum Gender {
