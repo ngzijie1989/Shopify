@@ -27,3 +27,19 @@ export const getProductInfo = async  (productId : string) => {
     throw error;
   }
 };
+
+export const AddToCart = async  (id : string, quantity: number) => {
+  try {
+    const cartItem = await prisma.cartItem.create({
+      data: {
+        cartQuantity: quantity,
+      }
+    });
+
+    return cartItem;
+    
+  } catch (error) {
+    console.error("Error posting to cart:", error);
+    throw error;
+  }
+};

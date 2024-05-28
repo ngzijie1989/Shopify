@@ -52,7 +52,7 @@ model CartItem {
   product       Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
   productId     String? @db.ObjectId
   cartQuantity  Int
-  status        Status
+  status        Status @default(PENDING)
 }
 
 model ConfirmedOrder {

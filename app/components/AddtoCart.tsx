@@ -5,7 +5,7 @@ import Button from "./Button";
 import AddtoCartModal from "./AddtoCartModal";
 import Product from "./Product";
 
-function AddtoCart({id, maxQuantity}: {id: string; maxQuantity: number}) {
+function AddtoCart({name, id, maxQuantity}: {id: string; maxQuantity: number; name: string}) {
   const [ quantity, setQuantity ] = useState<number>(1)
   const [ modal, setModal ] = useState<boolean>(false)
 
@@ -21,10 +21,6 @@ function AddtoCart({id, maxQuantity}: {id: string; maxQuantity: number}) {
     }
   }
 
-  const handleModalCart = () => {
-    setModal(true)
-  }
-
   return (
     <div>
       <div className="flex items-center">
@@ -34,10 +30,10 @@ function AddtoCart({id, maxQuantity}: {id: string; maxQuantity: number}) {
       </div>
 
       <div>
-        <button onClick ={handleModalCart} className="btn w-full bg-rose-600 text-white hover:text-black mt-5">Add to Cart</button>
+        <button onClick ={()=> setModal(true)} className="btn w-full bg-rose-600 text-white hover:text-black mt-5">Add to Cart</button>
       </div>
 
-      <AddtoCartModal id={id} quantity={quantity} setModal={setModal} modal={modal} />
+      <AddtoCartModal name={name} id={id} quantity={quantity} setModal={setModal} modal={modal} />
     </div>
   )
 }

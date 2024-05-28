@@ -18,3 +18,17 @@ export type ProductType = {
   gender: Gender;
   user?: UserType| null;
 }
+
+export type AddtoCartModalProps = {
+  modal: boolean;
+  setModal: (value: boolean) => void;
+  quantity: number; 
+  id: string;
+  name: string
+}
+
+export type AddtoCartProps = {
+  quantity: number; 
+  id: string;
+  name: string
+}
