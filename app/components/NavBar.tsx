@@ -1,18 +1,23 @@
+import { IoCartOutline } from "react-icons/io5";
+import { MdFavoriteBorder } from "react-icons/md";
+import { MdCurrencyExchange } from "react-icons/md";
+import Link from "next/link"
+
 function NavBar() {
   return (
-  <div className="navbar bg-base-100 flex justify-between">
+  <div className="navbar bg-base-100 flex justify-between sticky top-0 z-40 bg-slate-100 mb-5">
     <div>
       <button className="btn btn-square btn-ghost">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-5 h-5 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
       </button>
     </div>
     <div>
-      <a className="btn btn-ghost text-xl">Shopify!!!</a>
+      <a href="/" className="btn btn-ghost text-xl">Shopify!!!</a>
     </div>
     <div>
-      <button className="btn btn-square btn-ghost">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-5 h-5 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg>
-      </button>
+      <button className="btn text-xl"><MdCurrencyExchange /></button>
+      <Link href="/favorites" className="btn btn-ghost text-xl"><MdFavoriteBorder /></Link>
+      <Link href="/cart" className="btn btn-ghost text-xl"><IoCartOutline /></Link>
     </div>
   </div>
   )

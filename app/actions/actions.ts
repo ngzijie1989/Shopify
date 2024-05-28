@@ -58,3 +58,21 @@ export const AddToCart = async  (id : string, quantity: number) => {
     return false
   }
 };
+
+export const AddToFavorites = async  (id : string) => {
+  try {
+    const favorited = await prisma.favorite.create({
+      data: {
+        //not done
+      }
+    });
+
+    return true;
+    
+  } catch (error) {
+    console.error("Cannot add to favorites:", error);
+    return false
+  }
+};
+
+

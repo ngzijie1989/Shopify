@@ -3,14 +3,21 @@ import { ProductType } from "../lib/type"
 import Image from "next/image"
 import Link from "next/link"
 import styles from "@/app/lib/css/images.module.css"
+import AddFavorite from "./AddFavorite"
+
 
 function Product({product}: {product: ProductType}) {
+
+
   return (
       <Link href={`/products/${product.id}`}>
-      <div className="">
+      <div className="relative">
         <img src={product.imageLink ? product.imageLink : "/noImage.jpg" } alt={product.name} className={styles.productListImage}/>
         <h1 className="font-bold">{product.name}</h1>
         <p>${product.price}</p>
+        <div className="absolute top-1 right-2">
+          <AddFavorite id={product.id} />
+        </div>
       </div>
       </Link>
   )
