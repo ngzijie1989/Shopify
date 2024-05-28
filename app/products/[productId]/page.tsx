@@ -39,7 +39,7 @@ async function Page({params}: {params : { productId: string }}) {
           </div> 
 
           <div>
-            <AddtoCart id={product.id} maxQuantity={product.quantity} name={product.name} />
+            <AddtoCart id={product.id} maxQuantity={product.quantity} name={product.name} price={product.price} />
           </div>
         </div>
       </div>

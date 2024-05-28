@@ -1,11 +1,20 @@
 import { AddtoCartModalProps } from "../lib/type"
-import { AddToCart } from "../actions/actions"
+import { AddToCart } from "@/app/actions/actions"
+import { useRouter } from "next/navigation"
+import toast from "react-hot-toast"
 
 function AddtoCartModal({name, id, quantity, modal, setModal}: AddtoCartModalProps) {
 
+  const router = useRouter()
+
   const handleAddtoCart = async () => {
     const response = await AddToCart(id, quantity)
-    //continue
+    if (response === true) {
+      setModal(false)
+      router.push("/")
+      router.refresh()
+      toast.success("item has been added to cart")
+    }
   }
 
   return (

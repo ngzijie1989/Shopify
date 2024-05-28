@@ -1,3 +1,5 @@
+'use server' //important
+
 import prisma from "../lib/prisma"
 
 export const getAllProducts = async  () => {
@@ -33,13 +35,26 @@ export const AddToCart = async  (id : string, quantity: number) => {
     const cartItem = await prisma.cartItem.create({
       data: {
         cartQuantity: quantity,
+        status: "PENDING",
+        productId : id
+        //need to add the userId. not added yet
       }
     });
+    
+    const updateProductList = await prisma.product.update({
+      where: {
+        id: id
+      }, data :{
+        quantity: {
+          decrement: quantity
+        }
+      }
+    })
 
-    return cartItem;
+    return true;
     
   } catch (error) {
     console.error("Error posting to cart:", error);
-    throw error;
+    return false
   }
 };

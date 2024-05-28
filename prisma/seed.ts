@@ -4,9 +4,11 @@ const prisma = new PrismaClient()
 
 async function main (){
 
+  const deletecartItem = await prisma.cartItem.deleteMany();
   const deletedProductInfo = await prisma.Product.deleteMany();
   const deletedUserInfo = await prisma.User.deleteMany();
 
+  console.log("Deleted all CartItems")
   console.log("Deleted all products")
   console.log("Deleted all users")
 
