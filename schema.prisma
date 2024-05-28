@@ -10,7 +10,7 @@ datasource db {
 model User {
   id              String   @id @default(auto()) @map("_id") @db.ObjectId //@map is specific to mongo db
   email           String   @unique
-  name            String?  @unique
+  name            String  @unique
   provider        String?
   password        String?
   createdAt       DateTime  @default(now())
