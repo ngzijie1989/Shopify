@@ -19,7 +19,6 @@ function NavBar() {
       <button className="btn text-xl"><MdCurrencyExchange /></button>
       <Link href="/favorites" className="btn btn-ghost text-xl"><MdFavoriteBorder /></Link>
       <Link href="/cart" className="btn btn-ghost text-xl"><IoCartOutline /></Link>
-      <Link href="/cart" className="btn btn-ghost text-xl"><FaRegUserCircle /></Link>
       <div className="dropdown dropdown-end">
         <div tabIndex={0} role="button">
           <div className="btn text-xl">
@@ -32,7 +31,7 @@ function NavBar() {
               Profile
             </a>
           </li>
-          <li><a>Settings</a></li>
+          <li><Link href="/login">Login</Link></li>
           <li><a>Logout</a></li>
         </ul>
       </div>

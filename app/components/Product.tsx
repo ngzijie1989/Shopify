@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import { ProductType } from "../lib/type"
-import Image from "next/image"
 import Link from "next/link"
 import styles from "@/app/lib/css/images.module.css"
 import AddFavorite from "./AddFavorite"

@@ -1,0 +1,19 @@
+.googleButton{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f6f7fb; /* Google Blue */
+  color: black;
+  border: 0.5px solid grey;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.googleLogo{
+  height: 1rem; 
+}
