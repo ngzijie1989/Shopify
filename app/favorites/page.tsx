@@ -24,9 +24,6 @@ async function page() {
       }
     }
   }
-  
-  console.log(favProductsIds)
-
 
   return (
     <div>

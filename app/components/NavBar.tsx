@@ -7,10 +7,12 @@ import { auth } from "@/auth";
 import SignOutComponent from "@/app/components/SignOutComponent"
 import SignInComponent from "./SignInComponent";
 import ProfileLink from "./ProfileLink";
+import { getCartItems } from "../actions/actions";
 
 async function NavBar() {
   const session: any | null  = await auth()
-
+  const sessionEmail = session.user.email
+  const cartItems = await getCartItems(sessionEmail)
 
   return (
   <div className="navbar bg-base-100 flex justify-between sticky top-0 z-40 bg-slate-100 h-16">
@@ -20,7 +22,7 @@ async function NavBar() {
     <div className="flex items-center">
       <button className="btn btn-ghost text-xl"><MdCurrencyExchange /></button>
       <Link href="/favorites" className="btn btn-ghost text-xl"><MdFavoriteBorder /></Link>
-      <Link href="/cart" className="btn btn-ghost text-xl"><IoCartOutline /></Link>
+      <Link href="/cart" className="btn btn-ghost text-xl relative"><IoCartOutline /><span className="text-xs absolute top-0.5 right-1.5 bg-red-300 rounded-full py-0.5 px-1.5">{cartItems !== false && cartItems.length > 0 ? cartItems.length : ""}</span></Link>
       <div className="dropdown dropdown-end">
         <div tabIndex={0} role="button">
           <div className="btn btn-ghost text-xl">

@@ -1,4 +1,4 @@
-import { Category, Gender } from "@prisma/client";
+import { Category, Gender, Status } from "@prisma/client";
 
 export type UserType = {
   id: string;
@@ -13,10 +13,10 @@ export type ProductType = {
   price: number;
   imageLink?: string | null;
   quantity: number;
-  description?: string| null;
+  description?: string | null;
   category: Category;
   gender: Gender;
-  user?: UserType| null;
+  user?: UserType | null;
 }
 
 export type AddtoCartModalProps = {
@@ -57,4 +57,25 @@ export type FavoritesType = {
   id: string;
   userId: string;
   productId: string;
+}
+
+export type CartItemsType = {
+  id: string;
+  userId: string;
+  productId: string;
+  cartQuantity: number;
+  status: Status;
+  product: CartProductType;
+}
+
+export type CartProductType = {
+  id: string;
+  name: string;
+  price: number;
+  imageLink: string;
+  quantity: number;
+  description: string;
+  category: Category;
+  gender: Gender;
+  userId: string;
 }

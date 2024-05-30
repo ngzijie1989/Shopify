@@ -17,7 +17,7 @@ async function Page({params}: {params : { productId: string }}) {
 
   return (
 
-    <div className="w-4/5 mx-auto">
+    <div className="w-4/5 mx-auto mt-5">
       <div className="flex w-full">
         <div className="w-2/5">
           <img src={product.imageLink ? product.imageLink : "/noImage.jpg"} className={styles.productImage} alt={product.name}/>
