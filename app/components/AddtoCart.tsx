@@ -4,11 +4,14 @@ import { useState } from "react";
 import Button from "./Button";
 import AddtoCartModal from "./AddtoCartModal";
 import Product from "./Product";
+import { useRouter } from "next/navigation";
 
-function AddtoCart({price, name, id, maxQuantity}: {id: string; maxQuantity: number; name: string; price: number}) {
+function AddtoCart({price, name, id, maxQuantity,session}: {id: string; maxQuantity: number; name: string; price: number; session: any}) {
   const [ quantity, setQuantity ] = useState<number>(1)
   const [ modal, setModal ] = useState<boolean>(false)
   const [ totalPrice, setTotalPrice ] = useState<number>(price)
+
+  const router = useRouter()
 
   const handleDecrementQuantity = () => {
     if (quantity >1 ){
@@ -30,6 +33,14 @@ function AddtoCart({price, name, id, maxQuantity}: {id: string; maxQuantity: num
     }
   }
 
+  const handleAddToCart = () => {
+    if (session) {
+      setModal(true)
+    } else {
+      router.push("/no-access")
+    }
+  }
+
   return (
     <div>
       <div className="flex justify-between items-center">
@@ -45,10 +56,10 @@ function AddtoCart({price, name, id, maxQuantity}: {id: string; maxQuantity: num
       </div>
 
       <div>
-        <button onClick ={()=> setModal(true)} className="btn w-full bg-rose-600 text-white hover:text-black mt-5">Add to Cart</button>
+        <button onClick ={handleAddToCart} className="btn w-full bg-rose-600 text-white hover:text-black mt-5">Add to Cart</button>
       </div>
 
-      <AddtoCartModal name={name} id={id} quantity={quantity} setModal={setModal} modal={modal} />
+      <AddtoCartModal name={name} id={id} quantity={quantity} setModal={setModal} modal={modal} session={session} />
     </div>
   )
 }

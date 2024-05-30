@@ -24,11 +24,31 @@ export type AddtoCartModalProps = {
   setModal: (value: boolean) => void;
   quantity: number; 
   id: string;
-  name: string
+  name: string;
+  session: any;
 }
 
 export type AddtoCartProps = {
   quantity: number; 
   id: string;
-  name: string
+  name: string;
+}
+
+export type SessionTypeProps = {
+  user: {
+    name: string;
+    email: string;
+    picture: string;
+    sub: string;
+    iat: number;
+    exp: number;
+    jti: string;
+  };
+  name: string;
+  email: string;
+  picture: string;
+  sub: string;
+  iat: number;
+  exp: number;
+  jti: string;
 }

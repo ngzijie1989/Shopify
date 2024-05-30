@@ -4,11 +4,11 @@ import { MdFavoriteBorder } from "react-icons/md";
 import { MdFavorite } from "react-icons/md";
 import { AddToFavorites } from "../actions/actions";
 
-function AddFavorite({id}: {id: string}) {
+function AddFavorite({id, session}: {id: string; session: any}) {
 
   const handleAddFavorite = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
-    const addFavorites = await AddToFavorites(id);
+    const addFavorites = await AddToFavorites(id, session);
     //carry on
   }
 

@@ -1,13 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 import { ProductType } from "@/app/lib/type"
 import { getProductInfo } from "@/app/actions/actions"
-import Image from "next/image"
 import styles from "@/app/lib/css/images.module.css"
 import AddtoCart from "@/app/components/AddtoCart"
+import { auth } from "@/auth"
 
 async function Page({params}: {params : { productId: string }}) {
   const productId : string = params.productId
   const product: ProductType | null = await getProductInfo(productId)
+
+  const session: any | null  = await auth()
 
   if (product === null){
     return <div>Product not found</div>;
@@ -39,7 +41,7 @@ async function Page({params}: {params : { productId: string }}) {
           </div> 
 
           <div>
-            <AddtoCart id={product.id} maxQuantity={product.quantity} name={product.name} price={product.price} />
+            <AddtoCart id={product.id} maxQuantity={product.quantity} name={product.name} price={product.price} session={session}/>
           </div>
         </div>
       </div>

@@ -3,7 +3,8 @@
 
 import styles from "@/app/lib/css/login.module.css"
 import { useState } from "react";
-import { signIn } from "@/auth";
+import { signIn } from "next-auth/react";
+import toast from "react-hot-toast";
 
 function LoginWrapper() {
   const [email, setEmail] = useState<string>("")
@@ -11,8 +12,8 @@ function LoginWrapper() {
 
   const handleSubmitGoogle = (event: any) => {
     event.preventDefault();
-    signIn('google', { callbackUrl: "/"}); // Call the imported signIn function
-  
+    signIn('google', { callbackUrl: "/"})
+    .then(()=>{toast.success("Signed In successfully")})
   };
 
   const handleSubmitCredentials = (event: any) => {
@@ -25,22 +26,23 @@ function LoginWrapper() {
     }); // Call the imported signIn function
   };
 
+
   return (
     <div>
-      <form onSubmit={handleSubmitCredentials}>
-        <div className="mb-3">
-          <label className="flex flex-col w-full">
-            Email
-            <input type="text" placeholder="JeffBezos@email.com" className="input input-bordered w-full" onChange={(e)=> setEmail(e.currentTarget.value)} />
-          </label>
-        </div>
+        <form onSubmit={handleSubmitCredentials}>
+          <div className="mb-3">
+            <label className="flex flex-col w-full">
+              Email
+              <input type="text" placeholder="JeffBezos@email.com" className="input input-bordered w-full" onChange={(e)=> setEmail(e.currentTarget.value)} />
+            </label>
+          </div>
 
-        <div className="mb-3">
-          <label className="flex flex-col w-full">
-            Password
-            <input type="password"  className="input input-bordered w-full" onChange={(e)=> setPassword(e.currentTarget.value)}/>
-          </label>
-        </div>
+          <div className="mb-5">
+            <label className="flex flex-col w-full">
+              Password
+              <input type="password"  className="input input-bordered w-full" onChange={(e)=> setPassword(e.currentTarget.value)}/>
+            </label>
+          </div>
 
           <button className="btn btn-primary mb-2 w-full" type="submit">Sign In</button>
         </form>

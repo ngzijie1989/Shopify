@@ -75,7 +75,7 @@ const authConfig = {
 
           if (!userCheck) {
 
-            const newUser = await prisma.User.create({
+            const newUser = await prisma.user.create({
               data: {
                 name: profile.name,
                 email: profile.email,
@@ -101,15 +101,11 @@ const authConfig = {
     
     },
     async redirect({ url }){
-      console.log(url)
+      // console.log(url)
       if (url.includes("signin")) return "/"
       return url;
     },
     async session({session, token}){
-      return token
-    }, 
-    async jwt({token, user}){
-      console.log('JWT Callback', { token, user })
       return token
     }
   }
