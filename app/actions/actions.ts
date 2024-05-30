@@ -95,6 +95,7 @@ export const AddToFavorites = async  (id : string, session : any) => {
       });
 
       console.log("deleted")
+      return "deleted"
     } else {
       const favorited = await prisma.favorite.create({
         data: {
@@ -102,10 +103,9 @@ export const AddToFavorites = async  (id : string, session : any) => {
           productId: id
         }
       });
+      return "added"
       console.log("Added")
     }
-
-    return true;
     
   } catch (error) {
     console.error("Error: ", error);
@@ -124,13 +124,11 @@ export const getFavorites = async  (sessionEmail : string) => {
 
     const getFavorites = await prisma.favorite.findMany({
       where: {
-        id: user.id
+        userId: user.id
       }
     });
 
-    console.log(getFavorites)
-
-    return true;
+    return getFavorites;
     
   } catch (error) {
     console.error("Cannot get favorites:", error);
@@ -138,4 +136,34 @@ export const getFavorites = async  (sessionEmail : string) => {
   }
 };
 
+export const getFavoritesAll = async  (sessionEmail : string) => {
+  try {
 
+    const user = await prisma.user.findFirst({
+      where: {
+        email: sessionEmail
+      }
+    })
+
+    console.log(user)
+
+    const FavoritesAll = await prisma.favorite.findMany({
+      where: {
+        userId: user.id
+      }, 
+      include : {
+        product : true
+      }
+    });
+
+    const productsFavorited = FavoritesAll.map((fav)=>fav.product)
+
+    console.log(productsFavorited)
+
+    return productsFavorited;
+    
+  } catch (error) {
+    console.error("Cannot get favorites:", error);
+    return false
+  }
+};

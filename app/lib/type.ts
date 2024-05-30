@@ -52,3 +52,9 @@ export type SessionTypeProps = {
   exp: number;
   jti: string;
 }
+
+export type FavoritesType = {
+  id: string;
+  userId: string;
+  productId: string;
+}

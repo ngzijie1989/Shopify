@@ -4,6 +4,7 @@ const prisma = new PrismaClient()
 
 async function main (){
 
+  const deleteFavorites = await prisma.favorite.deleteMany();
   const deletecartItem = await prisma.cartItem.deleteMany();
   const deletedProductInfo = await prisma.Product.deleteMany();
   const deletedUserInfo = await prisma.User.deleteMany();

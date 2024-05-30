@@ -5,7 +5,7 @@ import styles from "@/app/lib/css/images.module.css"
 import AddFavorite from "./AddFavorite"
 
 
-function Product({product, session}: {product: ProductType, session: any}) {
+function Product({product, session, favProductsIds}: {product: ProductType, session: any, favProductsIds: string[]}) {
 
 
   return (
@@ -15,7 +15,7 @@ function Product({product, session}: {product: ProductType, session: any}) {
         <h1 className="font-bold">{product.name}</h1>
         <p>${product.price}</p>
         <div className="absolute top-1 right-2">
-          <AddFavorite id={product.id} session={session}/>
+          <AddFavorite id={product.id} session={session} favProductsIds={favProductsIds}/>
         </div>
       </div>
       </Link>
