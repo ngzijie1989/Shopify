@@ -90,7 +90,6 @@ export const AddToFavorites = async  (id : string, session : any) => {
         }
       });
 
-      console.log("deleted")
       return "deleted"
     } else {
       const favorited = await prisma.favorite.create({
@@ -100,7 +99,6 @@ export const AddToFavorites = async  (id : string, session : any) => {
         }
       });
       return "added"
-      console.log("Added")
     }
     
   } catch (error) {
