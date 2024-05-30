@@ -183,3 +183,32 @@ export const getCartItems = async  (sessionEmail : string) => {
   }
 };
 
+export const deleteCartItem = async  (item: any) => {
+  try {
+
+    console.log(item)
+
+    const user = await prisma.cartItem.delete({
+      where: {
+        id: item.id
+      }
+    })
+
+    const productUpdate = await prisma.product.update({
+      where: {
+        id: item.product.id
+      },
+      data: {
+        quantity: {
+          increment: item.cartQuantity
+        }
+      }
+    });
+
+    return true;
+    
+  } catch (error) {
+    console.error("Error posting to cart:", error);
+    return false
+  }
+};

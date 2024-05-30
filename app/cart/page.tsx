@@ -19,20 +19,30 @@ async function page() {
       if (cartItems !== false){
         productsCart = cartItems 
         count = productsCart.length
-        const totalPricePerItem = productsCart.map((item)=> item.cartQuantity * item.product.price)
-        totalPrice = totalPricePerItem.reduce((a,b) => a+b)
+        console.log(count)
+        if (count !== 0 ){
+          const totalPricePerItem = productsCart.map((item)=> item.cartQuantity * item.product.price)
+          totalPrice = totalPricePerItem.reduce((a,b) => a+b)
+        }
       } else {
         //show error page
       }
     }
   }
   return (
-    <div className="w-3/5 mx-auto mt-5">
-      <h1 className="font-bold mb-4 text-3xl">My Cart ({count})</h1>
-      <div>
-        <CartItems items={productsCart} totalPrice={totalPrice}/>
-      </div>
+    <div>
+      {count !== 0 ? 
+      <div className="w-3/5 mx-auto mt-5">
+        <h1 className="font-bold mb-4 text-3xl">My Cart ({count})</h1>
+        <div>
+          <CartItems items={productsCart} totalPrice={totalPrice}/>
+        </div>
+      </div> : 
+      <div className="w-3/5 mx-auto mt-5 text-center">
+        <p className="text-2xl"><em>Currently you do have any items in cart</em></p>
+      </div>}
     </div>
+
   )
 }
 
