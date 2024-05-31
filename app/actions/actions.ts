@@ -168,7 +168,8 @@ export const getCartItems = async  (sessionEmail : string) => {
 
     const cartItems = await prisma.cartItem.findMany({
       where: {
-        userId: user.id
+        userId: user.id,
+        status: "PENDING"
       }, 
       include : {
         product : true
@@ -204,6 +205,48 @@ export const deleteCartItem = async  (item: any) => {
         }
       }
     });
+
+    return true;
+    
+  } catch (error) {
+    console.error("Error posting to cart:", error);
+    return false
+  }
+};
+
+export const updateCart = async  (item: any, quantity: number) => {
+  try {
+
+    console.log(item)
+
+    const cartItem = await prisma.cartItem.update({
+      where: {
+        id: item.id
+      },
+      data: {
+        cartQuantity: quantity
+      }
+    });
+
+    let incremental;
+
+  if (quantity > item.cartQuantity) {
+    incremental = item.cartQuantity - quantity; // Replace with your logic to calculate the new quantity
+  } else {
+    incremental = quantity - item.cartQuantity // Replace with the alternative value
+  }
+    
+    const updateProductList = await prisma.product.update({
+      where: {
+        id: item.product.id
+      }, data :{
+        quantity: {
+          increment: incremental
+        }
+      }
+    })
+
+    console.log(updateProductList)
 
     return true;
     

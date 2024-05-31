@@ -3,12 +3,13 @@ import { CartItemsType } from "../lib/type";
 import { redirect } from "next/navigation";
 import { getCartItems } from "../actions/actions";
 import CartItems from "@/app/components/CartItems"
+import Link from "next/link";
 
 async function page() {
   const session = await auth();
   let productsCart: any[] = [] //CartItemsType got issue
   let count;
-  let totalPrice = 0;
+  let totalPrice: number = 0;
 
   if (!session || !session.user) {
     redirect("/no-access")
@@ -22,7 +23,7 @@ async function page() {
         console.log(count)
         if (count !== 0 ){
           const totalPricePerItem = productsCart.map((item)=> item.cartQuantity * item.product.price)
-          totalPrice = totalPricePerItem.reduce((a,b) => a+b)
+          totalPrice = (totalPricePerItem.reduce((a,b) => a+b))
         }
       } else {
         //show error page
@@ -39,7 +40,11 @@ async function page() {
         </div>
       </div> : 
       <div className="w-3/5 mx-auto mt-5 text-center">
+        <br></br><br></br><br></br><br></br><br></br>
         <p className="text-2xl"><em>Currently you do have any items in cart</em></p>
+        <div className="mt-5">
+          <Link href="/" className="btn btn-success">Continue to shop</Link>
+        </div>
       </div>}
     </div>
 

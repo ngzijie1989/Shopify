@@ -4,7 +4,7 @@
 import styles from "@/app/lib/css/images.module.css"
 import { useState } from "react"
 import { MdCancel } from "react-icons/md";
-import { deleteCartItem } from "../actions/actions";
+import { deleteCartItem, updateCart } from "../actions/actions";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
@@ -14,9 +14,11 @@ function CartItem({item, setTotal}: {item: any, setTotal: any}) { //not sure abo
   const category = item.product.category.charAt(0).toUpperCase() + item.product.category.slice(1).toLowerCase()
   const [ quantity, setQuantity ] = useState<number>(item.cartQuantity)
   const [ totalPrice, setTotalPrice ] = useState<number>(item.cartQuantity*item.product.price)
+  const [ change, setChange ] = useState<boolean>(false)
 
   const handleDecrementQuantity = () => {
     if (quantity >1 ){
+      setChange(true)
       setQuantity((prev)=> prev -1)
       setTotalPrice((prevPrice) => {
         const newPrice = prevPrice - item.product.price;
@@ -32,6 +34,7 @@ function CartItem({item, setTotal}: {item: any, setTotal: any}) { //not sure abo
   const handleIncrementQuantity = () => {
     const maxQuantity = item.product.quantity + item.cartQuantity
     if (quantity < maxQuantity){
+      setChange(true)
       setQuantity((prev)=> prev + 1)
       setTotalPrice((prevPrice) => {
         const newPrice = prevPrice + item.product.price;
@@ -52,9 +55,19 @@ function CartItem({item, setTotal}: {item: any, setTotal: any}) { //not sure abo
     }
   }
 
+  const handleUpdateCart = async () => {
+    console.log(item)
+    const response = await updateCart(item, quantity)
+    if (response === true){
+      toast.success("Quantity has been changed")
+      setChange(false)
+      router.refresh()
+    }
+  }
+
   return (
     <div className="relative">
-      <div className="border p-4 flex items-center justify-between rounded-lg mb-4">
+      <div className="border p-4 flex items-center justify-between rounded-lg mb-4 w-full">
         <div className="flex">
           <img className={`me-3 ${styles.cartImage}`} src={item.product.imageLink} alt={item.product.name}/>
           <div className="w-60">
@@ -65,15 +78,18 @@ function CartItem({item, setTotal}: {item: any, setTotal: any}) { //not sure abo
           </div>
         </div>
 
-        <div className="flex items-center">
-          <button className="btn text-3xl me-3" onClick={handleDecrementQuantity}> - </button> 
-          {quantity}
-          <button className="btn text-3xl ms-3" onClick={handleIncrementQuantity}> + </button>
+        <div className="flex flex-col items-center">
+          <div>
+            <button className="btn text-3xl me-3" onClick={handleDecrementQuantity}> - </button> 
+            {quantity}
+            <button className="btn text-3xl ms-3" onClick={handleIncrementQuantity}> + </button>
+          </div>
+          {change ? <button onClick={handleUpdateCart} className="btn btn-success p-1 mt-4">Confirm changes</button> : ""}
         </div>
 
         <div className="flex flex-col items-center justify-center">
           <h2>Total</h2>
-          <p className="font-bold">$<span className="font-bold">{totalPrice}</span></p>
+          <p className="font-bold">$<span className="font-bold">{totalPrice.toFixed(2)}</span></p>
         </div>
       </div>
 
