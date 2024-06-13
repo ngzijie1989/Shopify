@@ -1,6 +1,5 @@
 import { IoCartOutline } from "react-icons/io5";
-import { MdFavoriteBorder } from "react-icons/md";
-import { MdCurrencyExchange } from "react-icons/md";
+import { MdFavoriteBorder, MdCurrencyExchange } from "react-icons/md";
 import { FaRegUserCircle } from "react-icons/fa";
 import Link from "next/link"
 import { auth } from "@/auth";
@@ -8,6 +7,7 @@ import SignOutComponent from "@/app/components/SignOutComponent"
 import SignInComponent from "./SignInComponent";
 import ProfileLink from "./ProfileLink";
 import { getCartItems } from "../actions/actions";
+import { SiAboutdotme } from "react-icons/si";
 
 async function NavBar() {
   const session: any | null  = await auth()
@@ -23,6 +23,7 @@ async function NavBar() {
       <a href="/" className="btn btn-ghost text-xl">Shopify!!!</a>
     </div>
     <div className="flex items-center">
+      <Link href="/about" className="btn btn-ghost text-xl"><SiAboutdotme /></Link>
       <button className="btn btn-ghost text-xl"><MdCurrencyExchange /></button>
       <Link href="/favorites" className="btn btn-ghost text-xl"><MdFavoriteBorder /></Link>
       <Link href="/cart" className="btn btn-ghost text-xl relative"><IoCartOutline />{session && cartItems !== false && cartItems.length > 0 ? <span className="text-xs absolute top-0.5 right-1.5 bg-red-300 rounded-full py-0.5 px-1.5">{cartItems.length}</span> : ""}</Link>
