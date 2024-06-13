@@ -8,12 +8,13 @@ import { auth } from "@/auth"
 async function Page({params}: {params : { productId: string }}) { //use params to get the productID out
   const productId : string = params.productId
   const product: ProductType | null = await getProductInfo(productId)
+  let checkUserAlreadyAddedItem: string | boolean = ""
   
   const session: any | null  = await auth()
+  if (session !== null){
   const sessionEmail: string = session.user.email
-  
-  const checkUserAlreadyAddedItem: string | boolean = await checkUserAlreadyAdded(productId, sessionEmail)
-  console.log(checkUserAlreadyAddedItem)
+  checkUserAlreadyAddedItem = await checkUserAlreadyAdded(productId, sessionEmail)
+  }
 
   if (product === null){
     return <div>Product not found</div>;

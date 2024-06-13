@@ -6,8 +6,11 @@ import toast from "react-hot-toast"
 function AddtoCartModal({name, id, quantity, modal, setModal, session}: AddtoCartModalProps) {
 
   const router = useRouter()
-
-  const userEmail = session.user.email
+  let userEmail = ""
+  
+  if (session !== null){
+    userEmail = session.user.email
+  }
 
   const handleAddtoCart = async () => {
     const response = await AddToCart(id, quantity, userEmail)

@@ -14,10 +14,12 @@ Things left to do:
 7) Display cart list (done)---- %% if statements if cart is empty (done)----
 8) Delete a cart Item (done)----, change a quantity cart item with confirmation (done)----
 9) Proceed to confirm an order
-10) Add an about / landing page
-11) Confirmed orders
-12) Navbar tidy up 
-13) Responsiveness
-14) Currency change through API?
-15) Finally launch to a hosting platform
-16) have an if statement if item is already in cart, disable the add to cart button
+10) Add a landing page (done)
+11) Add an About Page
+12) Confirmed orders
+13) Navbar tidy up 
+14) Responsiveness
+15) Currency change through API?
+16) Finally launch to a hosting platform
+17) have an if statement if item is already in cart, disable the add to cart button (done)
+18) Loading skeletion interface

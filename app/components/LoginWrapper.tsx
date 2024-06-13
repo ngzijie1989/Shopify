@@ -12,7 +12,7 @@ function LoginWrapper() {
 
   const handleSubmitGoogle = (event: any) => {
     event.preventDefault();
-    signIn('google', { callbackUrl: "/"})
+    signIn('google', { callbackUrl: "/get-started"})
     .then(()=>{toast.success("Signed In successfully")})
   };
 
