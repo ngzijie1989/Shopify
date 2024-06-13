@@ -20,3 +20,4 @@ Things left to do:
 13) Responsiveness
 14) Currency change through API?
 15) Finally launch to a hosting platform
+16) have an if statement if item is already in cart, disable the add to cart button

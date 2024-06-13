@@ -1,15 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
 import { ProductType } from "@/app/lib/type"
-import { getProductInfo } from "@/app/actions/actions"
+import { getProductInfo, checkUserAlreadyAdded } from "@/app/actions/actions"
 import styles from "@/app/lib/css/images.module.css"
 import AddtoCart from "@/app/components/AddtoCart"
 import { auth } from "@/auth"
 
-async function Page({params}: {params : { productId: string }}) {
+async function Page({params}: {params : { productId: string }}) { //use params to get the productID out
   const productId : string = params.productId
   const product: ProductType | null = await getProductInfo(productId)
-
+  
   const session: any | null  = await auth()
+  const sessionEmail: string = session.user.email
+  
+  const checkUserAlreadyAddedItem: string | boolean = await checkUserAlreadyAdded(productId, sessionEmail)
+  console.log(checkUserAlreadyAddedItem)
 
   if (product === null){
     return <div>Product not found</div>;
@@ -41,7 +45,7 @@ async function Page({params}: {params : { productId: string }}) {
           </div> 
 
           <div>
-            <AddtoCart id={product.id} maxQuantity={product.quantity} name={product.name} price={product.price} session={session}/>
+            <AddtoCart id={product.id} maxQuantity={product.quantity} name={product.name} price={product.price} session={session} checkUserAlreadyAddedItem={checkUserAlreadyAddedItem}/>
           </div>
         </div>
       </div>

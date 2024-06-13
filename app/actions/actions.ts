@@ -1,6 +1,11 @@
-'use server' //important
+'use server' //important to run server side actions
 
 import prisma from "../lib/prisma"
+import { CartItemsType } from "../lib/type";
+
+function isValidCartItem(item: any): item is CartItemsType {
+  return item.product !== null && item.productId !== null;
+}
 
 export const getAllProducts = async  () => {
   try {
@@ -39,13 +44,16 @@ export const AddToCart = async  (id : string, quantity: number, email: string) =
       }
     })
 
+    if (!user) {
+      throw new Error(`No user found with email: ${email}`);
+    } //need this error handling or typescript will show a message at user.id that user may be possibly null. This is when user of email may not be found
+
     const cartItem = await prisma.cartItem.create({
       data: {
         cartQuantity: quantity,
         status: "PENDING",
         productId : id,
-        userId: user.id //wont be null //error already handled
-        //need to add the userId. not added yet
+        userId: user.id 
       }
     });
     
@@ -76,9 +84,13 @@ export const AddToFavorites = async  (id : string, session : any) => {
       }
     })
 
+    if (!user) {
+      throw new Error(`No user found with email: ${session.user.email}`);
+    } //need this error handling or typescript will show a message at user.id that user may be possibly null. This is when user of email may not be found
+
     const findFavorite = await prisma.favorite.findFirst({
       where: {
-        userId: user?.id,
+        userId: user.id,
         productId: id
       }
     })
@@ -94,7 +106,7 @@ export const AddToFavorites = async  (id : string, session : any) => {
     } else {
       const favorited = await prisma.favorite.create({
         data: {
-          userId: user?.id,
+          userId: user.id,
           productId: id
         }
       });
@@ -115,6 +127,10 @@ export const getFavorites = async  (sessionEmail : string) => {
         email: sessionEmail
       }
     })
+
+    if (!user) {
+      throw new Error(`No user found with email: ${sessionEmail}`);
+    }
 
     const getFavorites = await prisma.favorite.findMany({
       where: {
@@ -138,6 +154,10 @@ export const getFavoritesAll = async  (sessionEmail : string) => {
         email: sessionEmail
       }
     })
+
+    if (!user) {
+      throw new Error(`No user found with email: ${sessionEmail}`);
+    } //need this error handling or typescript will show a message at user.id that user may be possibly null. This is when user of email may not be found
 
     const FavoritesAll = await prisma.favorite.findMany({
       where: {
@@ -166,6 +186,10 @@ export const getCartItems = async  (sessionEmail : string) => {
       }
     })
 
+    if (!user) {
+      throw new Error(`No user found with email: ${sessionEmail}`);
+    } //need this error handling or typescript will show a message at user.id that user may be possibly null. This is when user of email may not be found
+
     const cartItems = await prisma.cartItem.findMany({
       where: {
         userId: user.id,
@@ -176,7 +200,9 @@ export const getCartItems = async  (sessionEmail : string) => {
       }
     });
 
-    return cartItems;
+    const validCartItems = cartItems.filter(isValidCartItem);
+
+    return validCartItems;
     
   } catch (error) {
     console.error("Cannot get favorites:", error);
@@ -187,15 +213,13 @@ export const getCartItems = async  (sessionEmail : string) => {
 export const deleteCartItem = async  (item: any) => {
   try {
 
-    console.log(item)
-
-    const user = await prisma.cartItem.delete({
+    await prisma.cartItem.delete({
       where: {
         id: item.id
       }
     })
 
-    const productUpdate = await prisma.product.update({
+    await prisma.product.update({
       where: {
         id: item.product.id
       },
@@ -216,8 +240,6 @@ export const deleteCartItem = async  (item: any) => {
 
 export const updateCart = async  (item: any, quantity: number) => {
   try {
-
-    console.log(item)
 
     const cartItem = await prisma.cartItem.update({
       where: {
@@ -255,3 +277,36 @@ export const updateCart = async  (item: any, quantity: number) => {
     return false
   }
 };
+
+export const checkUserAlreadyAdded = async  (productId: string, sessionEmail : string) => {
+  try {
+    const user = await prisma.user.findFirst({
+      where: {
+        email: sessionEmail
+      }
+    })
+
+    if (!user) {
+      throw new Error(`No user found with email: ${sessionEmail}`);
+    } //need this error handling or typescript will show a message at user.id that user may be possibly null. This is when user of email may not be found
+
+    const cartItem = await prisma.cartItem.findFirst({
+      where: {
+        userId: user.id,
+        productId: productId
+      }
+    });
+
+    if (cartItem !== null){
+      return "added"
+    } else {
+      return "not added"
+    }
+    
+  } catch (error) {
+    console.error("Cannot get favorites:", error);
+    return "error"
+  }
+};
+
+

@@ -6,7 +6,7 @@ import AddtoCartModal from "./AddtoCartModal";
 import Product from "./Product";
 import { useRouter } from "next/navigation";
 
-function AddtoCart({price, name, id, maxQuantity,session}: {id: string; maxQuantity: number; name: string; price: number; session: any}) {
+function AddtoCart({price, name, id, maxQuantity, session, checkUserAlreadyAddedItem}: {id: string; maxQuantity: number; name: string; price: number; session: any, checkUserAlreadyAddedItem: string}) {
   const [ quantity, setQuantity ] = useState<number>(1)
   const [ modal, setModal ] = useState<boolean>(false)
   const [ totalPrice, setTotalPrice ] = useState<number>(price)
@@ -56,7 +56,7 @@ function AddtoCart({price, name, id, maxQuantity,session}: {id: string; maxQuant
       </div>
 
       <div>
-        <button onClick ={handleAddToCart} className="btn w-full bg-rose-600 text-white hover:text-black mt-5">Add to Cart</button>
+        <button onClick ={handleAddToCart} className={`btn w-full bg-rose-600 text-white hover:text-black mt-5 ${checkUserAlreadyAddedItem === "added" ? "btn-disabled" : ""}`}>{checkUserAlreadyAddedItem === "added" ? "Item already added to cart" : "Add to Cart"}</button>
       </div>
 
       <AddtoCartModal name={name} id={id} quantity={quantity} setModal={setModal} modal={modal} session={session} />

@@ -7,8 +7,9 @@ import { MdCancel } from "react-icons/md";
 import { deleteCartItem, updateCart } from "../actions/actions";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { CartItemsType } from "../lib/type";
 
-function CartItem({item, setTotal}: {item: any, setTotal: any}) { //not sure about the setTotal typescript
+function CartItem({item, setTotal}: {item: CartItemsType, setTotal: any}) { //not sure about the setTotal typescript
   const router = useRouter()
 
   const category = item.product.category.charAt(0).toUpperCase() + item.product.category.slice(1).toLowerCase()
@@ -56,7 +57,6 @@ function CartItem({item, setTotal}: {item: any, setTotal: any}) { //not sure abo
   }
 
   const handleUpdateCart = async () => {
-    console.log(item)
     const response = await updateCart(item, quantity)
     if (response === true){
       toast.success("Quantity has been changed")

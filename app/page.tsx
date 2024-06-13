@@ -6,6 +6,7 @@ import { auth } from "@/auth";
 export async function Home() {
   const products: ProductType[] = await getAllProducts()
   const session: any | null = await auth()
+  
   let favProductsIds: string[] = []
   if (session){
     const sessionEmail: string = session.user.email

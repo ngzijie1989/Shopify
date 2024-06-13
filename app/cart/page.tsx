@@ -7,7 +7,7 @@ import Link from "next/link";
 
 async function page() {
   const session = await auth();
-  let productsCart: any[] = [] //CartItemsType got issue
+  let productsCart: CartItemsType[] = []
   let count;
   let totalPrice: number = 0;
 
@@ -18,9 +18,8 @@ async function page() {
     if (sessionEmail) {
       const cartItems = await getCartItems(sessionEmail);
       if (cartItems !== false){
-        productsCart = cartItems 
+        productsCart = cartItems
         count = productsCart.length
-        console.log(count)
         if (count !== 0 ){
           const totalPricePerItem = productsCart.map((item)=> item.cartQuantity * item.product.price)
           totalPrice = (totalPricePerItem.reduce((a,b) => a+b))
