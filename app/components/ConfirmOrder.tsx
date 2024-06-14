@@ -2,9 +2,10 @@
 
 import { CartItemsType } from "../lib/type"
 import { useState } from "react"
+import ConfirmModal from "./ConfirmModal"
 
 function ConfirmOrder({productsCart}: {productsCart : CartItemsType[]}) {
-  const {confirmModal, setConfirmModal} = useState<boolean>(false)
+  const [confirmModal, setConfirmModal] = useState<boolean>(false)
 
   const handleConfirmModal = () => {
     setConfirmModal(true)
@@ -13,6 +14,7 @@ function ConfirmOrder({productsCart}: {productsCart : CartItemsType[]}) {
   return (
     <div>
       <button onClick={handleConfirmModal} className="btn btn-accent mb-4">Confirm and place order</button>
+      <ConfirmModal productsCart={productsCart} confirmModal={confirmModal} setConfirmModal={setConfirmModal} />
     </div>
   )
 }

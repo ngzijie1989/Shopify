@@ -2,11 +2,10 @@ import { auth } from "@/auth";
 import { CartItemsType } from "../lib/type";
 import { redirect } from "next/navigation";
 import { getCartItems } from "../actions/actions";
-import CartItems from "@/app/components/CartItems"
-import Link from "next/link";
-import ConfirmOrder from "../components/ConfirmOrder";
+import CartItemsConfirmed from "@/app/components/CartItemsConfirmed"
 
 async function page() {
+
   const session = await auth();
   let productsCart: CartItemsType[] = []
   let count;
@@ -30,33 +29,10 @@ async function page() {
       }
     }
   }
-  
   return (
     <div>
-      {count !== 0 ? 
-      <div className="w-3/5 mx-auto mt-5">
-        <div className="flex justify-between">
-        <div>
-        <h1 className="font-bold text-3xl flex items-center">My Cart ({count})</h1>
-        </div>
-
-        <div>
-        <ConfirmOrder productsCart={productsCart}/>
-        </div>
-        </div>
-        <div>
-          <CartItems items={productsCart} totalPrice={totalPrice}/>
-        </div>
-      </div> : 
-      <div className="w-3/5 mx-auto mt-5 text-center">
-        <br></br><br></br><br></br><br></br><br></br>
-        <p className="text-2xl"><em>Currently you do have any items in cart</em></p>
-        <div className="mt-5">
-          <Link href="/" className="btn btn-success">Continue to shop</Link>
-        </div>
-      </div>}
+      <CartItemsConfirmed items={productsCart} totalPrice={totalPrice}/>
     </div>
-
   )
 }
 
