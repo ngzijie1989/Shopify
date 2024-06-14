@@ -15,7 +15,7 @@ export const getServerCookie = () => {
 
 export const setServerCookie = () => {
   const cookieStore = cookies()
-  const check = cookieStore.set("visited",1)
+  const set = cookieStore.set("visited","visited")
 
-  return "set"
+  return set
 };

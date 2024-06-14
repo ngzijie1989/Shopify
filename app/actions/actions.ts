@@ -268,8 +268,6 @@ export const updateCart = async  (item: any, quantity: number) => {
       }
     })
 
-    console.log(updateProductList)
-
     return true;
     
   } catch (error) {

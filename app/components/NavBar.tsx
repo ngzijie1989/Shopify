@@ -16,11 +16,17 @@ async function NavBar() {
   let cartItems;
   let showToolTip = false;
 
-  // const check = await getServerCookie()
-  // const set = await setServerCookie()
+  // async function setCook () {
+  //   "use server"
+  //   setServerCookie()
+  // }
 
-  // console.log(check)
-  // console.log(showToolTip)
+  // const check = await getServerCookie()
+  // if (check === "not visited"){
+  //   showToolTip = true
+  //   console.log(showToolTip)
+  //   setCook()
+  // }
 
   const session: any | null  = await auth()
 

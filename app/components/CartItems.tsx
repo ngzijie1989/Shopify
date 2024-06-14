@@ -7,8 +7,6 @@ import { useState } from "react"
 function CartItems({items, totalPrice}: {items: CartItemsType[]; totalPrice: number}) {
   const [total, setTotal] = useState<number>(totalPrice)
 
-  console.log(items)
-
   return (
     <div>
       <div>

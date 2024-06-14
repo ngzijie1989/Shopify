@@ -19,7 +19,6 @@ Things left to do:
 12) Confirmed orders
 13) Navbar tidy up 
 14) Responsiveness
-15) Currency change through API?
 16) Finally launch to a hosting platform
 17) have an if statement if item is already in cart, disable the add to cart button (done)
 18) Loading skeletion interface

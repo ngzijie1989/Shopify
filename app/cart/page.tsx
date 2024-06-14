@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { getCartItems } from "../actions/actions";
 import CartItems from "@/app/components/CartItems"
 import Link from "next/link";
+import ConfirmOrder from "../components/ConfirmOrder";
 
 async function page() {
   const session = await auth();
@@ -33,7 +34,15 @@ async function page() {
     <div>
       {count !== 0 ? 
       <div className="w-3/5 mx-auto mt-5">
-        <h1 className="font-bold mb-4 text-3xl">My Cart ({count})</h1>
+        <div className="flex justify-between">
+        <div>
+        <h1 className="font-bold text-3xl flex items-center">My Cart ({count})</h1>
+        </div>
+
+        <div>
+        <ConfirmOrder productsCart={productsCart}/>
+        </div>
+        </div>
         <div>
           <CartItems items={productsCart} totalPrice={totalPrice}/>
         </div>

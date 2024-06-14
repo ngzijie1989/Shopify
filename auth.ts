@@ -101,7 +101,6 @@ const authConfig = {
     
     },
     async redirect({ url }){
-      // console.log(url)
       if (url.includes("signin")) return "/"
       return url;
     },
