@@ -4,7 +4,7 @@ import Link from "next/link"
 
 function page() {
   return (
-    <div className="max-w-5xl mx-auto px-4 py-8">
+    <div className={`max-w-5xl mx-auto px-4 py-8 ${styles.aboutContainer}`}>
       <div>
       <h1 className="text-2xl font-bold mb-4">About Myself</h1>
         <img src="/zijie2.jpg" alt="zijie" className={styles.aboutImage} />
@@ -19,7 +19,7 @@ function page() {
 
             <p className="text-lg mb-4">
               After the course, I set off to learn more programming languages in Python, Javascript, and frameworks like nextJS and React.
-              I applied my learning through making demo websites such as this website (Shopify) and a Movie Hunt Website!
+              I applied my learning through making demo websites such as this website (Shopify Clone) and a Movie Hunt Website!
             </p>
 
             <p className="text-lg mb-4">
@@ -77,21 +77,22 @@ function page() {
 
       <h2 className="text-2xl font-bold mt-8 mb-4">Get in Touch with me!</h2>
       <p className="text-lg mb-4">
-        If you have any feedbacks, you may drop me an email @ ng_zi_jie@hotmail.com
+        If you have any feedback, you may drop me an email @ ng_zi_jie@hotmail.com
       </p>
 
       <p className="text-lg mb-4">
         Visit my other website and check out my other projects!
+      </p>
         <ul className="list-disc list-inside mb-4">
-        <li className="text-lg mb-2">
-        <Link href="https://airbnb-zi-7ea9278fda78.herokuapp.com/" passHref legacyBehavior><a target="_blank">Airbnb Clone</a></Link>
-        </li>
+        {/* <li className="text-lg mb-2">
+        <Link href="https://airbnb-zi-7ea9278fda78.herokuapp.com/" passHref legacyBehavior><a target="_blank"><span className={styles.linkText}>Airbnb Clone</span></a></Link>
+        </li> */}
 
         <li className="text-lg mb-2">
-        <Link href=" https://fullstack-next-js-mu.vercel.app/" passHref legacyBehavior><a target="_blank">Movie Hunt!</a></Link>
+        <Link href=" https://fullstack-next-js-mu.vercel.app/" passHref legacyBehavior><a target="_blank"><span className={styles.linkText}>Movie Hunt!</span></a></Link>
+        <br></br><span className={styles.description}>Movie Hunt is a website that uses the TMDB API to search for movies. nextJS was also used, but for the DB, Vercel was used and it was written in plain Javascript. </span>
         </li>
       </ul>
-      </p>
 
       <p className="text-lg mb-4">
         To know more about me, please visit my socia media accounts!

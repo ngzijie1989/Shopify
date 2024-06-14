@@ -10,3 +10,17 @@
   height: 30px;
   width: 30px;
 }
+
+.linkText{
+  color: blue;
+  text-decoration: underline;
+}
+
+.description{
+  font-size: 0.8rem;
+}
+
+.aboutContainer{
+  text-justify: inter-word;
+  text-align: justify
+}

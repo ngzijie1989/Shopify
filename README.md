@@ -15,7 +15,7 @@ Things left to do:
 8) Delete a cart Item (done)----, change a quantity cart item with confirmation (done)----
 9) Proceed to confirm an order
 10) Add a landing page (done)
-11) Add an About Page, add a bubble to move people to this page (ongoing)
+11) Add an About Page (done), add a bubble to move people to this page (ongoing)
 12) Confirmed orders
 13) Navbar tidy up 
 14) Responsiveness
