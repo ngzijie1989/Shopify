@@ -10,28 +10,28 @@ function page() {
         <img src="/zijie2.jpg" alt="zijie" className={styles.aboutImage} />
           <div>
             <p className="text-lg mb-4">
-              Hi! I am Zi Jie, an aspiring web developer whom set a goal to myself to fulfill my passion for web development in the year of 2024.
-              I attended a web development bootcamp for 9 weeks in 2024, where i started learning Ruby, SQL, HTML, CSS, Javascript, Bootstrap and Ruby on Rails
-              as the main framework. It included a capstone project, where a team of 5 created a full stack application for enthusiastic plant users where users 
-              can identify plant species or illnesses through a snap of the camera, and an active marketplace where the community can actively trade plants through the app!
+              Hi! I am Zi Jie, an aspiring web developer. My journey began in 2024 when I set out to fulfill a goal I set for myself to nurture my passion for web development.
+              I attended a web development bootcamp for 9 weeks in 2024, where I started learning Ruby, SQL, HTML, CSS, Javascript, Bootstrap and Ruby on Rails
+              as the main framework. It included a capstone project, where I and a team of 4 others created a full stack application for enthusiastic plant users to
+              be able to identify plant species or illnesses through a snap of the camera, and an active marketplace where the community can actively trade plants through the app!
               It was immensely fulfilling to see the application we made take shape!
             </p>
 
             <p className="text-lg mb-4">
-              After the course, i set off to learn more programming languages in Python, Javascript, and frameworks like nextJS and React.
+              After the course, I set off to learn more programming languages in Python, Javascript, and frameworks like nextJS and React.
               I applied my learning through making demo websites such as this website (Shopify) and a Movie Hunt Website!
             </p>
 
             <p className="text-lg mb-4">
-              Though my journey has only been 5 months, but it was immensely fulfilling and i hope that i can continue to grow and learn more 
-              about the web development world!
+              My short 5 month journey has been eye-opening and led me to appreciate the intricacies and technicalities in web development. I will continue to grow and learn more 
+              about web development and hope to be given opportunities to hone my skills even further.
             </p>
           </div>
       </div>
 
       <h2 className="text-2xl font-bold mt-8 mb-4">More about this demo E-commerce App that I created</h2>
       <p className="text-lg mb-4">
-        I created this E-commerce App, Shopify Clone, mainly to learn more on the <span className="font-bold">CRUD operations using nextJS framework, Typescript and utilize nextJS server side actions.</span>
+        I created this E-commerce App, Shopify Clone, mainly to learn more on the <span className="font-bold">CRUD operations using nextJS framework, Typescript and utilizing nextJS server side actions.</span>
       </p>
 
       <p className="text-lg mb-4">
@@ -56,8 +56,7 @@ function page() {
       <h2 className="text-2xl font-bold mt-8 mb-4">Tech Stack</h2>
       <ul className="list-disc list-inside mb-4">
         <li className="text-lg mb-2">
-          <span className="font-semibold">nextJS:</span> nextJS is the tech framework that I am using to create this site. In this site, i am also using the 
-          tailwind CSS, typescript as well, which nextJS has conveniently did the setup for me during the very initial boilerplate.
+          <span className="font-semibold">nextJS:</span> nextJS is an excellent framework that integrates seamlessly with Tailwind CSS and TypeScript, providing a streamlined and easy setup from the initial boilerplate.
         </li>
 
         <li className="text-lg mb-2">
@@ -78,7 +77,20 @@ function page() {
 
       <h2 className="text-2xl font-bold mt-8 mb-4">Get in Touch with me!</h2>
       <p className="text-lg mb-4">
-        If you have any feedbacks, you may drop me an email @ ng_zi_jie@hotmail.com .
+        If you have any feedbacks, you may drop me an email @ ng_zi_jie@hotmail.com
+      </p>
+
+      <p className="text-lg mb-4">
+        Visit my other website and check out my other projects!
+        <ul className="list-disc list-inside mb-4">
+        <li className="text-lg mb-2">
+        <Link href="https://airbnb-zi-7ea9278fda78.herokuapp.com/" passHref legacyBehavior><a target="_blank">Airbnb Clone</a></Link>
+        </li>
+
+        <li className="text-lg mb-2">
+        <Link href=" https://fullstack-next-js-mu.vercel.app/" passHref legacyBehavior><a target="_blank">Movie Hunt!</a></Link>
+        </li>
+      </ul>
       </p>
 
       <p className="text-lg mb-4">
@@ -91,11 +103,11 @@ function page() {
         </div>
 
         <div className="me-3">
-          <Link href="https://www.linkedin.com/in/ng-zi-jie-3065b79a/"><img src="/linkedin.svg" alt='linkedin' className={styles.mediaLogo}></img></Link>
+          <Link href="https://www.linkedin.com/in/ng-zi-jie-3065b79a/" passHref legacyBehavior><a target="_blank"><img src="/linkedin.svg" alt='linkedin' className={styles.mediaLogo}></img></a></Link>
         </div>
 
         <div className="me-3">
-          <Link href="https://github.com/ngzijie1989"><img src="/github.svg" alt='facebook' className={styles.mediaLogo}></img></Link>
+          <Link href="https://github.com/ngzijie1989" passHref legacyBehavior><a target="_blank"><img src="/github.svg" alt='facebook' className={styles.mediaLogo}></img></a></Link>
         </div>
       </div>
 
