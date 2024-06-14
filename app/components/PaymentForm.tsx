@@ -5,17 +5,30 @@ import { useState } from "react";
 
 function PaymentForm({items, totalPrice}: {items: CartItemsType[]; totalPrice: number}) {
   const [creditCard, setCreditCard ] = useState<boolean>(false)
+  const [paymentMode, setPaymentMode] = useState<string>("")
+  const [cardNumber, setCardNumber] = useState<string>("")
+  const [cardName, setCardName] = useState<string>("")
+  const [cardExpiry, setCardExpiry] = useState<string>("")
+  const [cardSecurity, setCardSecurity] = useState<string>("")
 
-  const handleSubmitPayment = () => {
-
+  const handleSubmitPayment = ({paymentMode, cardNumber, cardName, cardExpiry, cardSecurity} 
+    : {paymentMode: string, cardNumber: string, cardName: string, cardExpiry: string, cardSecurity: string}) => {
+      console.log(paymentMode)
   }
 
-  const handleOpenCCFrom = () => {
+  const handleCCSelection = () => {
     setCreditCard(true)
+    setPaymentMode("creditCard")
   }
 
-  const handleCloseCCFrom = () => {
+  const handleCODSelection = () => {
     setCreditCard(false)
+    setPaymentMode("Cash On Delivery")
+  }
+
+  const handlePaynowSelection = () => {
+    setCreditCard(false)
+    setPaymentMode("Paynow")
   }
 
   return (
@@ -28,21 +41,21 @@ function PaymentForm({items, totalPrice}: {items: CartItemsType[]; totalPrice: n
         <div className="form-control">
           <label className="label cursor-pointer">
             <span className="label-text">Cash On Delivery</span> 
-            <input type="radio" name="radio-10" className="radio checked:bg-blue-500" onChange={handleCloseCCFrom}/>
+            <input type="radio" name="radio-10" className="radio checked:bg-blue-500" onChange={handleCODSelection}/>
           </label>
         </div>
 
         <div className="form-control">
           <label className="label cursor-pointer">
             <span className="label-text">Paynow</span> 
-            <input type="radio" name="radio-10" className="radio checked:bg-blue-500" onChange={handleCloseCCFrom}/>
+            <input type="radio" name="radio-10" className="radio checked:bg-blue-500" onChange={handlePaynowSelection}/>
           </label>
         </div>
 
         <div className="form-control">
           <label className="label cursor-pointer">
             <span className="label-text">Credit Card</span> 
-            <input type="radio" name="radio-10" className="radio checked:bg-blue-500" onChange={handleOpenCCFrom}/>
+            <input type="radio" name="radio-10" className="radio checked:bg-blue-500" onChange={handleCCSelection}/>
           </label>
         </div>
         
@@ -51,14 +64,14 @@ function PaymentForm({items, totalPrice}: {items: CartItemsType[]; totalPrice: n
             <div className="label">
               <span className="label-text">Card number</span>
             </div>
-            <input type="text" placeholder="XXXX XXXX XXXX XXXX" className="input input-bordered w-full" />
+            <input type="text" placeholder="XXXX XXXX XXXX XXXX" className="input input-bordered w-full" onChange={(e) => setCardNumber(e.target.value)} />
           </label>
 
           <label className="form-control w-full">
             <div className="label">
               <span className="label-text">Name on Card</span>
             </div>
-            <input type="text" placeholder="John Doe" className="input input-bordered w-full" />
+            <input type="text" placeholder="John Doe" className="input input-bordered w-full" onChange={(e) => setCardName(e.target.value)}/>
           </label>
 
           <div className="flex">
@@ -66,14 +79,14 @@ function PaymentForm({items, totalPrice}: {items: CartItemsType[]; totalPrice: n
               <div className="label">
                 <span className="label-text">Expiry Date</span>
               </div>
-              <input type="text" placeholder="MM/YY" className="input input-bordered w-7/8 me-3" />
+              <input type="text" placeholder="MM/YY" className="input input-bordered w-7/8 me-3" onChange={(e) => setCardExpiry(e.target.value)} />
             </label>
 
             <label className="form-control w-1/2">
               <div className="label">
                 <span className="label-text">Security Code</span>
               </div>
-              <input type="text" placeholder="XXX" className="input input-bordered w-full" />
+              <input type="text" placeholder="XXX" className="input input-bordered w-full" onChange={(e) => setCardSecurity(e.target.value)} />
             </label>
           </div>
         </div> : ""}
