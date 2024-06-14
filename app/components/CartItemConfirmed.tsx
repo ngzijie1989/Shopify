@@ -26,12 +26,7 @@ function CartItemConfirmed({item}: {item: CartItemsType}) { //not sure about the
             <p>Unit Price: ${item.product.price}</p>
             <p>Category: {category}</p>
             <p>Gender: {item.product.gender}</p>
-          </div>
-        </div>
-
-        <div className="flex flex-col items-center">
-          <div>
-            {quantity}
+            <p>Quantity Ordered: {quantity}</p>
           </div>
         </div>
 

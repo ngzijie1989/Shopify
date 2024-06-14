@@ -3,6 +3,7 @@ import { CartItemsType } from "../lib/type";
 import { redirect } from "next/navigation";
 import { getCartItems } from "../actions/actions";
 import CartItemsConfirmed from "@/app/components/CartItemsConfirmed"
+import PaymentForm from "../components/PaymentForm";
 
 async function page() {
 
@@ -30,8 +31,16 @@ async function page() {
     }
   }
   return (
-    <div>
-      <CartItemsConfirmed items={productsCart} totalPrice={totalPrice}/>
+    <div className="flex mt-4 w-5/6 mx-auto">
+      <div className="me-5 w-1/2 ">
+        <h1 className="text-3xl font-bold mb-4">Payment Details</h1>
+        <PaymentForm />
+      </div>
+
+      <div className="w-1/2 ">
+        <h1 className="text-3xl font-bold mb-4">Order Details</h1>
+        <CartItemsConfirmed items={productsCart} totalPrice={totalPrice}/>
+      </div>
     </div>
   )
 }
