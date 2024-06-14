@@ -8,10 +8,22 @@ import SignInComponent from "./SignInComponent";
 import ProfileLink from "./ProfileLink";
 import { getCartItems } from "../actions/actions";
 import { SiAboutdotme } from "react-icons/si";
+import { cookies } from "next/headers";
+import { getServerCookie, setServerCookie } from "../lib/utils/cookie";
 
 async function NavBar() {
-  const session: any | null  = await auth()
+  const cookieStore = cookies();
   let cartItems;
+  let showToolTip = false;
+
+  // const check = await getServerCookie()
+  // const set = await setServerCookie()
+
+  // console.log(check)
+  // console.log(showToolTip)
+
+  const session: any | null  = await auth()
+
   if (session){
     const sessionEmail = session.user.email
     cartItems = await getCartItems(sessionEmail)
