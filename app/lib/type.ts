@@ -86,8 +86,13 @@ export type ConfirmedOrderType = {
   totalPrice: number;
   paymentMethod: string;
   DeliverStatus: Delivery;
-  description?: string | null;
-  category: Category;
-  gender: Gender;
-  user?: UserType | null;
+  confirmedItems?: ConfirmedItemsType | null
+}
+
+export type ConfirmedItemsType = {
+  id: string;
+  confirmedOrderId: string | null;
+  productId: string;
+  Quantity: number;
+  BoughtPrice: number
 }

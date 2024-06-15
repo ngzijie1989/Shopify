@@ -13,8 +13,8 @@ function PaymentForm({items, totalPrice}: {items: CartItemsType[]; totalPrice: n
 
   const info = {
     "paymentMode": paymentMode,
-    "purchasedItems": items,
-    "totalPrice": totalPrice
+    "totalPrice": totalPrice,
+    "purchasedItems": items
   }
 
   const options = {
