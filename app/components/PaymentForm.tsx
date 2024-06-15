@@ -11,9 +11,25 @@ function PaymentForm({items, totalPrice}: {items: CartItemsType[]; totalPrice: n
   const [cardExpiry, setCardExpiry] = useState<string>("")
   const [cardSecurity, setCardSecurity] = useState<string>("")
 
-  const handleSubmitPayment = ({paymentMode, cardNumber, cardName, cardExpiry, cardSecurity} 
-    : {paymentMode: string, cardNumber: string, cardName: string, cardExpiry: string, cardSecurity: string}) => {
-      console.log(paymentMode)
+  const info = {
+    "paymentMode": paymentMode,
+    "purchasedItems": items,
+    "totalPrice": totalPrice
+  }
+
+  const options = {
+    method: "POST", 
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(info)
+  }
+
+  const handleSubmitPayment = async (
+    // {paymentMode, cardNumber, cardName, cardExpiry, cardSecurity} 
+    // : {paymentMode: string, cardNumber: string, cardName: string, cardExpiry: string, cardSecurity: string}
+  ) => {
+      await fetch("/api/submit-order", options)
   }
 
   const handleCCSelection = () => {
@@ -33,7 +49,7 @@ function PaymentForm({items, totalPrice}: {items: CartItemsType[]; totalPrice: n
 
   return (
     <div>
-      <form onSubmit={handleSubmitPayment} className="bg-white rounded pb-8 mb-4">
+      <form className="bg-white rounded pb-8 mb-4">
       <div className="mb-4">
         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
           Payment Mode
@@ -95,7 +111,7 @@ function PaymentForm({items, totalPrice}: {items: CartItemsType[]; totalPrice: n
 
 
       <div className="flex items-center justify-between">
-        <button
+        <button onClick={handleSubmitPayment}
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="submit"
         >

@@ -1,4 +1,4 @@
-import { Category, Gender, Status } from "@prisma/client";
+import { Category, Gender, Status, Delivery } from "@prisma/client";
 
 export type UserType = {
   id: string;
@@ -78,4 +78,16 @@ export type CartProductType = {
   category: Category;
   gender: Gender;
   userId: string;
+}
+
+export type ConfirmedOrderType = {
+  id: string;
+  userId: string | null;
+  totalPrice: number;
+  paymentMethod: string;
+  DeliverStatus: Delivery;
+  description?: string | null;
+  category: Category;
+  gender: Gender;
+  user?: UserType | null;
 }
