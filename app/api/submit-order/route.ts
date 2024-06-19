@@ -1,6 +1,6 @@
 import prisma from "@/app/lib/prisma"
 import { NextResponse } from "next/server"
-import { ConfirmedOrderType, ConfirmedItemsType } from "@/app/lib/type"
+import { ConfirmedOrderType, ConfirmedItemsType, CartItemsType } from "@/app/lib/type"
 
 export async function POST(info: any) {
   try {
@@ -8,27 +8,38 @@ export async function POST(info: any) {
     
     const userId = response.purchasedItems[0].userId
 
-    console.log(response)
-
     const updateOrder: ConfirmedOrderType = await prisma.confirmedOrder.create({
       data: {
         userId: userId,
         totalPrice: response.totalPrice,
-        paymentMethod: response.paymentMethod,
+        paymentMethod: response.paymentMode,
         DeliverStatus: "PENDING"
       }
     })
 
-    console.log(updateOrder)
+    const orderItemsList: CartItemsType[] = response.purchasedItems
 
-    
-    
-      
+    orderItemsList.forEach(async (orderItem: CartItemsType)=>{
+      await prisma.confirmedItem.create({
+        data: {
+          ConfirmedOrderId: updateOrder.id,
+          productId: orderItem.productId,
+          Quantity: orderItem.cartQuantity,
+          BoughtPrice: orderItem.product.price
+        }
+      })
 
-        return NextResponse.json({data: "ok"})
+      await prisma.cartItem.delete({
+        where: {
+          id: orderItem.id
+        }
+      })
+    })
+    
+      return NextResponse.json("complete")
       
     } catch (error) {
     
-    return NextResponse.json({ data: { error: "Server error" } });
+    return NextResponse.json("Server error. Please try again");
   }
 }

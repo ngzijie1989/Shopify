@@ -22,7 +22,7 @@ function LoginWrapper() {
       email: email,
       password: password,
       redirect: true,
-      callbackUrl: "/"
+      callbackUrl: "/get-started"
     }); // Call the imported signIn function
   };
 

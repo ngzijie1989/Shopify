@@ -2,6 +2,9 @@
 
 import { CartItemsType } from "../lib/type";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+import PaymentErrorMessage from "./PaymentErrorMessage";
 
 function PaymentForm({items, totalPrice}: {items: CartItemsType[]; totalPrice: number}) {
   const [creditCard, setCreditCard ] = useState<boolean>(false)
@@ -10,6 +13,10 @@ function PaymentForm({items, totalPrice}: {items: CartItemsType[]; totalPrice: n
   const [cardName, setCardName] = useState<string>("")
   const [cardExpiry, setCardExpiry] = useState<string>("")
   const [cardSecurity, setCardSecurity] = useState<string>("")
+  const [error, setError] = useState<boolean>(false)
+  const [errorMessage, setErrorMessage] = useState<string>("")
+
+  const router = useRouter()
 
   const info = {
     "paymentMode": paymentMode,
@@ -25,31 +32,51 @@ function PaymentForm({items, totalPrice}: {items: CartItemsType[]; totalPrice: n
     body: JSON.stringify(info)
   }
 
-  const handleSubmitPayment = async (
-    // {paymentMode, cardNumber, cardName, cardExpiry, cardSecurity} 
-    // : {paymentMode: string, cardNumber: string, cardName: string, cardExpiry: string, cardSecurity: string}
-  ) => {
-      await fetch("/api/submit-order", options)
+  const handleSubmitPayment = async (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault()
+
+      if (paymentMode === ""){
+        setError(true)
+        setErrorMessage("Error: Payment Mode needs to be selected")
+      } else if (paymentMode === "creditCard" && (cardNumber ==="" || cardName === "" || cardExpiry === "" || cardSecurity === "")){
+        setError(true)
+        setErrorMessage("Error: CC details needs to be filled in")
+      } else {
+        setError(false)
+        const response = await fetch("/api/submit-order", options)
+        const data = await response.json()
+        if (data === "complete"){
+          router.push("/confirmed-order-success")
+          toast.success("Transaction has been completed successfully!")
+        } else {
+          setError(true)
+          setErrorMessage(`${data}`)
+        }
+      }
+
   }
 
   const handleCCSelection = () => {
+    setError(false)
     setCreditCard(true)
     setPaymentMode("creditCard")
   }
 
   const handleCODSelection = () => {
+    setError(false)
     setCreditCard(false)
     setPaymentMode("Cash On Delivery")
   }
 
   const handlePaynowSelection = () => {
+    setError(false) 
     setCreditCard(false)
     setPaymentMode("Paynow")
   }
 
   return (
     <div>
-      <form className="bg-white rounded pb-8 mb-4">
+      <form className="bg-white rounded mb-4" onSubmit={handleSubmitPayment} >
       <div className="mb-4">
         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
           Payment Mode
@@ -111,7 +138,7 @@ function PaymentForm({items, totalPrice}: {items: CartItemsType[]; totalPrice: n
 
 
       <div className="flex items-center justify-between">
-        <button onClick={handleSubmitPayment}
+        <button
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="submit"
         >
@@ -119,6 +146,8 @@ function PaymentForm({items, totalPrice}: {items: CartItemsType[]; totalPrice: n
         </button>
       </div>
     </form>
+
+    {error ? <PaymentErrorMessage>{errorMessage}</PaymentErrorMessage> : ""}
     </div>
   )
 }

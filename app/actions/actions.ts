@@ -11,7 +11,11 @@ export const getAllProducts = async  () => {
   try {
     const products = await prisma.product.findMany();
 
-    return products;
+    const filterProducts = await products.filter((product)=>{
+      return product.quantity !== 0
+    })
+
+    return filterProducts;
 
   } catch (error) {
     console.error("Error fetching products:", error);
