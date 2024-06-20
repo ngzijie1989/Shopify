@@ -6,6 +6,12 @@ import AddtoCart from "@/app/components/AddtoCart"
 import { auth } from "@/auth"
 
 async function Page({params}: {params : { productId: string }}) { //use params to get the productID out
+
+  const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+  // Add small delay so that can see shimmer haha
+  await delay(2000); // 5000 milliseconds = 5 seconds
+
   const productId : string = params.productId
   const product: ProductType | null = await getProductInfo(productId)
   let checkUserAlreadyAddedItem: string | boolean = ""
@@ -21,7 +27,6 @@ async function Page({params}: {params : { productId: string }}) { //use params t
   }
 
   return (
-
     <div className="w-4/5 mx-auto mt-5">
       <div className="flex w-full">
         <div className="w-2/5">

@@ -4,6 +4,11 @@ import ProductList from "./components/ProductList";
 import { auth } from "@/auth";
 
 export async function Home() {
+  const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+  // Add small delay so that can see shimmer haha
+  await delay(1000); // 5000 milliseconds = 5 seconds
+
   const products: ProductType[] = await getAllProducts()
   const session: any | null = await auth()
   

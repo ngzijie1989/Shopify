@@ -10,7 +10,7 @@ Im currently working on an e-commerce like App to learn more on Typescript and a
 
 **Prisma**: Prisma as the ORM relational mapping between MongoDB and my main application. Prisma is also good to add seed data and schema along with tables into my main App!
 
-**Typrscript**>: Learning to use Typescript in this demo website. It helps to identify potential errors early on and save a lot of time in future as we should have already handled those exceptions that we may have missed out handling!
+**Typrscript**: Learning to use Typescript in this demo website. It helps to identify potential errors early on and save a lot of time in future as we should have already handled those exceptions that we may have missed out handling!
 
 Feel free to check out the website!
 
@@ -24,3 +24,4 @@ Things left to do:
 2) Finally launch to a hosting platform
 3) Loading skeletion interface (to do tomorrow)
 4) carousel banner at home page
+5) Add search for homepage

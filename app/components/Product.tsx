@@ -11,7 +11,7 @@ function Product({product, session, favProductsIds}: {product: ProductType, sess
   return (
       <Link href={`/products/${product.id}`}>
       <div className="relative">
-        <img src={product.imageLink ? product.imageLink : "/noImage.jpg" } alt={product.name} className={styles.productListImage}/>
+        <img src={product.imageLink ? product.imageLink : "/noImage.jpg" } alt={product.name} className="h-80 w-full"/>
         <h1 className="font-bold">{product.name}</h1>
         <p>${product.price}</p>
         <div className="absolute top-1 right-2">
