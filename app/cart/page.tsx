@@ -15,7 +15,7 @@ async function page() {
   if (!session || !session.user) {
     redirect("/no-access")
   } else {
-    const sessionEmail: string | undefined | null = session.user.email;
+    const sessionEmail: string= session.user.email!;
     if (sessionEmail) {
       const cartItems = await getCartItems(sessionEmail);
       if (cartItems !== false){

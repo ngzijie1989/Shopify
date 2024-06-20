@@ -91,8 +91,9 @@ export type ConfirmedOrderType = {
 
 export type ConfirmedItemsType = {
   id: string;
-  confirmedOrderId: string | null;
-  productId: string;
+  ConfirmedOrderId: string | null;
+  productId: string | null;
   Quantity: number;
-  BoughtPrice: number
+  BoughtPrice: number;
+  product: ProductType;
 }

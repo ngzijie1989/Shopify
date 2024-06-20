@@ -1,7 +1,8 @@
 'use server' //important to run server side actions
 
+import { ok } from "assert";
 import prisma from "../lib/prisma"
-import { CartItemsType } from "../lib/type";
+import { CartItemsType, ConfirmedItemsType, ConfirmedOrderType } from "../lib/type";
 
 function isValidCartItem(item: any): item is CartItemsType {
   return item.product !== null && item.productId !== null;
@@ -341,5 +342,55 @@ export const checkOrderId = async  (orderId: string) => {
     throw error;
   }
 };
+
+export const getConfirmedOrders = async (email: string) => {
+  try {
+
+    const user = await prisma.user.findFirst({
+      where: {
+        email: email
+      }
+    })
+
+    if (user !== null){
+      const confirmedOrders = await prisma.confirmedOrder.findMany({
+        where: {
+          userId: user.id
+        }
+      })
+
+      if (confirmedOrders){
+        return {status: "orders", data: confirmedOrders}
+      } else {
+        return {status: "no-orders", data: []}
+      }
+    } else {
+      return {status: "not logged in"}
+    }
+
+  } catch (error) {
+    console.error("Error checking ID:", error);
+    throw error;
+  }
+};
+
+export const getConfirmedOrderItems = async (orderId: string) => {
+  try {
+
+    const confirmedOrderItems: ConfirmedItemsType[] = await prisma.confirmedItem.findMany({
+      where: {
+        ConfirmedOrderId: confirmedOrder.id
+      }, 
+      include : {
+        product : true
+      }
+    })
+
+  } catch (error) {
+    console.error("Error checking ID:", error);
+    throw error;
+  }
+};
+
 
 

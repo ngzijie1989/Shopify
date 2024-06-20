@@ -1,6 +1,6 @@
 import { IoCartOutline } from "react-icons/io5";
-import { MdFavoriteBorder, MdCurrencyExchange } from "react-icons/md";
-import { FaRegUserCircle } from "react-icons/fa";
+import { MdFavoriteBorder } from "react-icons/md";
+import { FaRegUserCircle, FaRegListAlt } from "react-icons/fa";
 import Link from "next/link"
 import { auth } from "@/auth";
 import SignOutComponent from "@/app/components/SignOutComponent"
@@ -42,9 +42,9 @@ async function NavBar() {
     </div>
     <div className="flex items-center">
       <Link href="/about" className="btn btn-ghost text-xl"><SiAboutdotme /></Link>
-      <button className="btn btn-ghost text-xl"><MdCurrencyExchange /></button>
       <Link href="/favorites" className="btn btn-ghost text-xl"><MdFavoriteBorder /></Link>
       <Link href="/cart" className="btn btn-ghost text-xl relative"><IoCartOutline />{session && cartItems !== false && cartItems.length > 0 ? <span className="text-xs absolute top-0.5 right-1.5 bg-red-300 rounded-full py-0.5 px-1.5">{cartItems.length}</span> : ""}</Link>
+      <Link href="/confirmed-orders" className="btn btn-ghost text-xl"><FaRegListAlt /></Link>
       <div className="dropdown dropdown-end">
         <div tabIndex={0} role="button">
           <div className="btn btn-ghost text-xl">
