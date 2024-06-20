@@ -311,4 +311,35 @@ export const checkUserAlreadyAdded = async  (productId: string, sessionEmail : s
   }
 };
 
+function isValidObjectId(id: string): boolean {
+  const hexRegExp = /^[0-9a-fA-F]{24}$/;
+  return hexRegExp.test(id);
+}
+
+export const checkOrderId = async  (orderId: string) => {
+  try {
+
+    if (!isValidObjectId(orderId)){
+      return false
+    } else {
+        const check = await prisma.confirmedOrder.findFirst({
+          where: {
+            id: orderId
+          }
+        })
+    
+        if (check){
+          return true
+        } else {
+          return false
+        }
+    }
+
+
+  } catch (error) {
+    console.error("Error checking ID:", error);
+    throw error;
+  }
+};
+
 
