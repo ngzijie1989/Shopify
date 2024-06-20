@@ -18,7 +18,7 @@ Things left to do:
 11) Add an About Page (done), add a bubble to direct people to this page (ongoing)
 12) Confirmed orders (to do tomorrow)
 13) Navbar tidy up (done)
-14) Responsiveness
+14) Responsiveness (to do tomorrow)
 16) Finally launch to a hosting platform
 17) have an if statement if item is already in cart, disable the add to cart button (done)
 18) Loading skeletion interface (to do tomorrow)

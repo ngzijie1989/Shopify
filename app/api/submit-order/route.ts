@@ -36,10 +36,10 @@ export async function POST(info: any) {
       })
     })
     
-      return NextResponse.json("complete")
+      return NextResponse.json({status:"complete", id: updateOrder.id})
       
     } catch (error) {
     
-    return NextResponse.json("Server error. Please try again");
+    return NextResponse.json({status:"Server error. Please try again"});
   }
 }
