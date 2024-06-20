@@ -1,28 +1,18 @@
+/* eslint-disable @next/next/no-img-element */
 import { ConfirmedItemsType } from "../lib/type"
+import styles from "@/app/lib/css/images.module.css"
 
 function ConfirmedOrderItem({item}: {item: ConfirmedItemsType}) {
-  console.log(item)
-  return (
-    <div>
-          <div className="relative">
-      <div className="border p-4 flex items-center justify-between rounded-lg mb-4 w-full">
-        <div className="flex">
-          {/* <img className={`me-3 ${styles.cartImage}`} src={item.product.imageLink} alt={item.product.name}/> */}
-          <div className="w-60">
-            {/* <h1 className="font-bold">{item.}</h1>
-            <p>Unit Price: ${item.product.price}</p>
-            <p>Category: {category}</p>
-            <p>Gender: {item.product.gender}</p>
-            <p>Quantity Ordered: {quantity}</p> */}
-          </div>
-        </div>
 
-        <div className="flex flex-col items-center justify-center">
-          <h2>Total</h2>
-          {/* <p className="font-bold">$<span className="font-bold">{totalPrice.toFixed(2)}</span></p> */}
-        </div>
+  return (
+    <div className="border p-3 m-3 flex">
+      <img className={`${styles.cartImage} me-3`} src={item.product?.imageLink} alt={item.product.name} />
+      <div>
+        <p>Product: <span className="font-bold">{item.product.name}</span></p>
+        <p>Quantity: <span className="font-bold">{item.Quantity}</span></p>
+        <p>Unit Price: <span className="font-bold">${item.BoughtPrice}</span></p>
+        <p>Total: <span className="font-bold">${item.BoughtPrice*item.Quantity}</span></p>
       </div>
-    </div>
     </div>
   )
 }

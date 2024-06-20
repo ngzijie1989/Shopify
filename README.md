@@ -16,7 +16,7 @@ Things left to do:
 9) Proceed to confirm an order (done)
 10) Add a landing page (done)
 11) Add an About Page (done), add a bubble to direct people to this page (ongoing)
-12) Confirmed orders (to do tomorrow)
+12) Confirmed orders (done)
 13) Navbar tidy up (done)
 14) Responsiveness (to do tomorrow)
 16) Finally launch to a hosting platform

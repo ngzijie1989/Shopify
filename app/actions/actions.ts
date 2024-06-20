@@ -356,10 +356,15 @@ export const getConfirmedOrders = async (email: string) => {
       const confirmedOrders = await prisma.confirmedOrder.findMany({
         where: {
           userId: user.id
-        }
-      })
+        },
+        include: {
+          confirmedItems: true
+        },
+      });
 
-      if (confirmedOrders){
+      console.log(confirmedOrders)
+
+      if (confirmedOrders.length > 0){
         return {status: "orders", data: confirmedOrders}
       } else {
         return {status: "no-orders", data: []}
@@ -374,23 +379,34 @@ export const getConfirmedOrders = async (email: string) => {
   }
 };
 
-export const getConfirmedOrderItems = async (orderId: string) => {
+export const getOrderItems = async (orderId: string) => {
   try {
 
-    const confirmedOrderItems: ConfirmedItemsType[] = await prisma.confirmedItem.findMany({
+    const order = await prisma.confirmedOrder.findFirst({
       where: {
-        ConfirmedOrderId: confirmedOrder.id
+        id: orderId
       }, 
-      include : {
-        product : true
+      include: {
+        confirmedItems: {
+          include: {
+            product: true
+          }
+        }
       }
     })
 
+    if (order){
+      const orderItems = order.confirmedItems
+      return {status: "valid", data: orderItems}
+    } else {
+      return {status: "invalid", data: []}
+    }
   } catch (error) {
-    console.error("Error checking ID:", error);
+    console.error("Error checking orderID:", error);
     throw error;
   }
 };
+
 
 
 

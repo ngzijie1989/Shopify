@@ -11,7 +11,7 @@ export type ProductType = {
   id: string;
   name: string;
   price: number;
-  imageLink?: string | null;
+  imageLink?: string;
   quantity: number;
   description?: string | null;
   category: Category;
@@ -86,7 +86,7 @@ export type ConfirmedOrderType = {
   totalPrice: number;
   paymentMethod: string;
   DeliverStatus: Delivery;
-  confirmedItems?: ConfirmedItemsType | null
+  confirmedItems: ConfirmedItemsType[];
 }
 
 export type ConfirmedItemsType = {
@@ -96,4 +96,9 @@ export type ConfirmedItemsType = {
   Quantity: number;
   BoughtPrice: number;
   product: ProductType;
+}
+
+export type ConfirmedOrderItemsType = {
+  status: string;
+  data: ConfirmedItemsType[]
 }
