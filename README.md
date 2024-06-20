@@ -3,6 +3,7 @@ Hi all,
 Im currently working on an e-commerce like App to learn more on Typescript and also nextJS server actions.
 
 <h1 className="underline">Tech Stack</h1>
+
 **nextJS**: nextJS is an excellent framework that integrates seamlessly with Tailwind CSS and TypeScript, providing a streamlined and easy setup from the initial boilerplate. Server side actions help to reduce the hassle of going back and fro the server, and this reduces the time for development. Great!
 
 **MongoDB**: MongoDB Atlas. Previously i used Vercel PostgreSQL as my database, and i like to try to use other sources. MongoDB is another popular choice, hence i set off to try to use it! Lucky me that MongoDB provided 1 x free use for test runs, or junior developers like me!
