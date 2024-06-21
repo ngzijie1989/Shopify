@@ -66,7 +66,7 @@ function CartItem({item, setTotal}: {item: CartItemsType, setTotal: any}) { //no
   }
 
   return (
-    <div className="relative">
+    <div className="relative bg-white">
       <div className="flex border p-3 mt-2 ">
         <div className="me-3 flex items-center">
           <img className={`me-3 ${styles.cartImage}`} src={item.product.imageLink} alt={item.product.name}/>

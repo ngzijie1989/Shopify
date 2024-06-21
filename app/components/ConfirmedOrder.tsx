@@ -7,7 +7,7 @@ function ConfirmedOrder({order}: {order : ConfirmedOrderType}) {
 
   return (
     <div>
-      <div className="p-6 border flex justify-between mb-3 flex-col sm:flex-row ">
+      <div className="p-6 border flex justify-between mb-3 flex-col sm:flex-row bg-white ">
         <div className="text-xs md:text-base">
           <h1>Order ID: <span className="font-bold">#{order.id}</span></h1>
           <p>Total Price Paid: <span className="font-bold">${order.totalPrice}</span></p>
