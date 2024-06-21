@@ -4,6 +4,7 @@ import ProductList from "./components/ProductList";
 import { auth } from "@/auth";
 import HomepageCarousel from "./components/SlideCarousel";
 import SlideCarousel from "./components/SlideCarousel";
+import SearchBar from "./components/SearchBar";
 
 export async function Home() {
   const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
@@ -25,10 +26,15 @@ export async function Home() {
 
   return (
     <main className="mt-5">
-        <h1 className="font-bold text-2xl ms-2">Promotions</h1>
+        <h1 className="font-bold text-2xl mx-4">Promotions</h1>
         <SlideCarousel />
-        <h1 className="font-bold text-2xl ms-2 mt-4">Products</h1>
-        <ProductList products={products} session={session} favProductsIds={favProductsIds} />
+        <div className="w-full sm:w-11/12 mx-auto">
+          <div className="flex justify-between mx-4 mt-6">
+            <h1 className="font-bold text-2xl mt-4">Products</h1>
+            <SearchBar />
+          </div>
+          <ProductList products={products} session={session} favProductsIds={favProductsIds} />
+        </div>
     </main>
   );
 }
