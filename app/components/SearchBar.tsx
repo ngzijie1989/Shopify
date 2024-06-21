@@ -2,26 +2,17 @@
   import { useState } from "react"
   import { useDebouncedCallback } from "use-debounce";
 
-  function SearchBar() {
-    const [input, setInput] = useState<string>("")
+  function SearchBar({input, setInput}: {input: string; setInput: (value: string)=> void}) {
 
-    const options = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json'
-      }
-    };
-    
-    const SearchRun = useDebouncedCallback(async() => {
-      const response = await fetch(`/api/search-products?input=${input}`, options)
-    },500)
+    const searchRun = useDebouncedCallback((value: string) => {
+      setInput(value);
+    }, 500);
 
     const handleSearchProduct = (event: React.ChangeEvent<HTMLInputElement>) => {
-      setInput(event.currentTarget.value)
-      searchRun()
-
-      //need to search for products. use API call with debounce
+      const { value } = event.target
+      searchRun(value)
     }
+
     return (
       <div>
         <input type="text" placeholder="Search for a product" className="input input-bordered w-48 sm:w-60 md:w-80" onChange={handleSearchProduct} />
