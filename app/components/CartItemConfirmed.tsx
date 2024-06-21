@@ -18,22 +18,21 @@ function CartItemConfirmed({item}: {item: CartItemsType}) { //not sure about the
 
   return (
     <div className="relative">
-      <div className="border p-4 flex items-center justify-between rounded-lg mb-4 w-full">
+      <div className="border p-4 flex rounded-lg mb-4 w-full">
+        <div>
+          <img className={`me-3 w-16 sm:w-20 md:w-24 ${styles.cartImageConfirmed}`} src={item.product.imageLink} alt={item.product.name}/>
+        </div>
         <div className="flex">
-          <img className={`me-3 ${styles.cartImage}`} src={item.product.imageLink} alt={item.product.name}/>
-          <div className="w-60">
+          <div className="w-full ms-3 text-sm sm:text-sm md:text-base flex flex-col justify-center">
             <h1 className="font-bold">{item.product.name}</h1>
             <p>Unit Price: ${item.product.price}</p>
             <p>Category: {category}</p>
             <p>Gender: {item.product.gender}</p>
             <p>Quantity Ordered: {quantity}</p>
+            <p className="font-bold">Total:<span className="font-bold"> ${totalPrice.toFixed(2)}</span></p>
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-center">
-          <h2>Total</h2>
-          <p className="font-bold">$<span className="font-bold">{totalPrice.toFixed(2)}</span></p>
-        </div>
       </div>
     </div>
   )

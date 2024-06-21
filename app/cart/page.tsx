@@ -12,6 +12,11 @@ async function page() {
   let count;
   let totalPrice: number = 0;
 
+  const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+  // Add small delay so that can see shimmer haha
+  await delay(500); // 5000 milliseconds = 5 seconds
+
   if (!session || !session.user) {
     redirect("/no-access")
   } else {
@@ -34,10 +39,10 @@ async function page() {
   return (
     <div>
       {count !== 0 ? 
-      <div className="w-3/5 mx-auto mt-5">
+      <div className="w-full mx-auto mt-5 sm:w-4/5 p-2">
         <div className="flex justify-between">
         <div>
-        <h1 className="font-bold text-3xl flex items-center">My Cart ({count})</h1>
+        <h1 className="font-bold text-xl sm:text-3xl flex items-center">My Cart ({count})</h1>
         </div>
 
         <div>

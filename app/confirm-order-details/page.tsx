@@ -7,6 +7,11 @@ import PaymentForm from "../components/PaymentForm";
 
 async function page() {
 
+  const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+  // Add small delay so that can see shimmer haha
+  await delay(1000); // 5000 milliseconds = 5 seconds
+
   const session = await auth();
   let productsCart: CartItemsType[] = []
   let count;
@@ -31,13 +36,13 @@ async function page() {
     }
   }
   return (
-    <div className="flex mt-4 w-5/6 mx-auto">
-      <div className="me-5 w-1/2 ">
+    <div className="flex mt-4 w-5/6 mx-auto flex-col sm:flex-row">
+      <div className="me-5 w-full sm:w-1/2 ">
         <h1 className="text-3xl font-bold mb-4">Payment Details</h1>
         <PaymentForm items={productsCart} totalPrice={totalPrice}/>
       </div>
 
-      <div className="w-1/2 ">
+      <div className="w-full sm:w-1/2">
         <h1 className="text-3xl font-bold mb-4">Order Details</h1>
         <CartItemsConfirmed items={productsCart} totalPrice={totalPrice}/>
       </div>

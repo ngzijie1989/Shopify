@@ -4,14 +4,14 @@ async function ProductListSkeleton() {
 
   return (
     <div className="grid grid-cols-2 gap-6 w-4/5 mx-auto sm:grid-cols-3 md:grid-cols-4">
-      <div className={`${styles.shimmer} h-96 rounded-lg`}></div>
-      <div className={`${styles.shimmer} h-96 rounded-lg`}></div>
-      <div className={`${styles.shimmer} h-96 rounded-lg`}></div>
-      <div className={`${styles.shimmer} h-96 rounded-lg`}></div>
-      <div className={`${styles.shimmer} h-96 rounded-lg`}></div>
-      <div className={`${styles.shimmer} h-96 rounded-lg`}></div>
-      <div className={`${styles.shimmer} h-96 rounded-lg`}></div>
-      <div className={`${styles.shimmer} h-96 rounded-lg`}></div>
+      <div className={`${styles.shimmer} h-64 sm:h-80 md:h-96 rounded-lg`}></div>
+      <div className={`${styles.shimmer} h-64 sm:h-80 md:h-96 rounded-lg`}></div>
+      <div className={`${styles.shimmer} h-64 sm:h-80 md:h-96 rounded-lg`}></div>
+      <div className={`${styles.shimmer} h-64 sm:h-80 md:h-96 rounded-lg`}></div>
+      <div className={`${styles.shimmer} h-64 sm:h-80 md:h-96 rounded-lg`}></div>
+      <div className={`${styles.shimmer} h-64 sm:h-80 md:h-96 rounded-lg`}></div>
+      <div className={`${styles.shimmer} h-64 sm:h-80 md:h-96 rounded-lg`}></div>
+      <div className={`${styles.shimmer} h-64 sm:h-80 md:h-96 rounded-lg`}></div>
     </div>
   )
 }

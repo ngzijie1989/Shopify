@@ -13,7 +13,7 @@ function ConfirmOrder({productsCart}: {productsCart : CartItemsType[]}) {
   
   return (
     <div>
-      <button onClick={handleConfirmModal} className="btn btn-accent mb-4">Confirm and place order</button>
+      <button onClick={handleConfirmModal} className="btn btn-accent mb-4">Confirm Order</button>
       <ConfirmModal productsCart={productsCart} confirmModal={confirmModal} setConfirmModal={setConfirmModal} />
     </div>
   )

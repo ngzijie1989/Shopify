@@ -28,23 +28,27 @@ async function Page({params}: {params : { productId: string }}) { //use params t
 
   return (
     <div className="w-4/5 mx-auto mt-5">
-      <div className="flex w-full">
-        <div className="w-2/5">
-          <img src={product.imageLink ? product.imageLink : "/noImage.jpg"} className={styles.productImage} alt={product.name}/>
+      <div className="flex w-full flex-col sm:flex-row">
+        <div className="w-full sm:w-2/5">
+          <img src={product.imageLink ? product.imageLink : "/noImage.jpg"} className={`${styles.productImage}`} alt={product.name}/>
         </div>
 
-        <div className="ms-5 w-3/5 flex flex-col">
-          <div className="flex-1">
+        <div className="sm:ms-5 sm:w-3/5 flex flex-col w-full mt-3 sm:mt-0">
+          <div className="flex-1 text-center sm:text-left">
             <h1 className="font-bold text-2xl">{product.name}</h1>
             <br></br>
             <h2 className="font-bold">Description</h2>
             <p>{product.description}</p>
             <br></br>
+
             <h2 className="font-bold">Category</h2>
             <p>{product.category}</p>
+
             <br></br>
+
             <h2 className="font-bold">Price</h2>
             <p>S${product.price}</p>
+
             <br></br>
             <h2 className="font-bold">Quantity Available</h2>
             <p>{product.quantity}</p>

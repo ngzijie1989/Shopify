@@ -67,30 +67,30 @@ function CartItem({item, setTotal}: {item: CartItemsType, setTotal: any}) { //no
 
   return (
     <div className="relative">
-      <div className="border p-4 flex items-center justify-between rounded-lg mb-4 w-full">
-        <div className="flex">
+      <div className="flex border p-3 mt-2 ">
+        <div className="me-3 flex items-center">
           <img className={`me-3 ${styles.cartImage}`} src={item.product.imageLink} alt={item.product.name}/>
-          <div className="w-60">
-            <h1 className="font-bold">{item.product.name}</h1>
+        </div>
+      <div className="flex items-center justify-between rounded-lg w-full">
+        <div className="flex">
+          <div className="text-xs sm:text-sm md:text-base flex flex-col justify-center">
+            <h1 className="font-bold w-2/5 sm:w-3/5 md:w-3/5">{item.product.name}</h1>
             <p>Unit Price: ${item.product.price}</p>
             <p>Category: {category}</p>
             <p>Gender: {item.product.gender}</p>
+            <p className="font-bold">Total: <span className="font-bold">${totalPrice.toFixed(2)}</span></p>
           </div>
         </div>
 
         <div className="flex flex-col items-center">
-          <div>
-            <button className="btn text-3xl me-3" onClick={handleDecrementQuantity}> - </button> 
-            {quantity}
-            <button className="btn text-3xl ms-3" onClick={handleIncrementQuantity}> + </button>
+          <div className="flex">
+            <button className="btn text-base md:text-3xl me-3 font-bold md:font-normal" onClick={handleDecrementQuantity}> - </button> 
+            <p className="flex items-center">{quantity}</p>
+            <button className="btn text-base md:text-3xl ms-3 font-bold md:font-normal" onClick={handleIncrementQuantity}> + </button>
           </div>
           {change ? <button onClick={handleUpdateCart} className="btn btn-success p-1 mt-4">Confirm changes</button> : ""}
         </div>
-
-        <div className="flex flex-col items-center justify-center">
-          <h2>Total</h2>
-          <p className="font-bold">$<span className="font-bold">{totalPrice.toFixed(2)}</span></p>
-        </div>
+      </div>
       </div>
 
       <div className="absolute top-3 right-3 text-xl">

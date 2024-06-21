@@ -1,5 +1,6 @@
 .productImage{
   width: 100%;
+  height: 500px;
 }
 
 .productListImage{
@@ -10,4 +11,8 @@
 .cartImage{
   width: 100px;
   height: 100px
+}
+
+.cartImageConfirmed{
+  height: 100%
 }

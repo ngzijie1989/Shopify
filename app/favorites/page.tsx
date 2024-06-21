@@ -3,11 +3,17 @@ import { redirect } from "next/navigation";
 import { getFavoritesAll, getFavorites } from "../actions/actions";
 import ProductList from "../components/ProductList";
 import { ProductType, FavoritesType } from "../lib/type";
+import NoFavorites from "../components/NoFavorites";
 
 async function page() {
   const session = await auth();
   let productsFavorited: ProductType[] = []
   let favProductsIds: string[] = []
+
+  const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+  // Add small delay so that can see shimmer haha
+  await delay(200); // 5000 milliseconds = 5 seconds
 
   if (!session || !session.user) {
     redirect("/no-access")
@@ -25,10 +31,15 @@ async function page() {
     }
   }
 
+  console.log(productsFavorited)
+
   return (
     <div>
       <main className="mt-5">
-      <ProductList products={productsFavorited} session={session} favProductsIds={favProductsIds} />
+      {productsFavorited.length !== 0 ? <ProductList products={productsFavorited} session={session} favProductsIds={favProductsIds} />
+      :
+      <NoFavorites />}
+      
     </main>
     </div>
   )
