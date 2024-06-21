@@ -36,7 +36,7 @@ async function NavBar() {
   }
 
   return (
-  <div className="navbar bg-base-100 flex justify-between sticky top-0 z-40 bg-slate-100 h-16">
+  <div className="navbar w-full flex justify-between sticky top-0 z-40 bg-slate-300 h-16">
     <div>
       <a href="/" className="btn btn-ghost text-xl">Shopify!!!</a>
     </div>
@@ -45,13 +45,13 @@ async function NavBar() {
       <Link href="/favorites" className="btn btn-ghost text-xl"><MdFavoriteBorder /></Link>
       <Link href="/cart" className="btn btn-ghost text-xl relative"><IoCartOutline />{session && cartItems !== false && cartItems.length > 0 ? <span className="text-xs absolute top-0.5 right-1.5 bg-red-300 rounded-full py-0.5 px-1.5">{cartItems.length}</span> : ""}</Link>
       <Link href="/confirmed-orders" className="btn btn-ghost text-xl"><FaRegListAlt /></Link>
-      <div className="dropdown dropdown-end">
+      <div className="dropdown dropdown-end ">
         <div tabIndex={0} role="button">
           <div className="btn btn-ghost text-xl">
             <FaRegUserCircle />
           </div>
         </div>
-        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 ">
           {session ? <ProfileLink /> : ""}
           {session ? (<SignOutComponent />) : (<SignInComponent />)}
         </ul>

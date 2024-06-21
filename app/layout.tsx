@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar";
 import { Toaster } from "react-hot-toast";
 import SessionProvider from '@/app/components/SessionProvider'
 import { auth } from "@/auth"
+import styles from "@/app/lib/css/backgroundColor.module.css"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +24,7 @@ export default async function RootLayout({
 
   return (
       <html lang="en">
-        <body className={inter.className}>
+        <body className={`${inter.className} ${styles.background}`}>
         <SessionProvider session={session}> 
           <Toaster position="top-center" />
           <NavBar /> 

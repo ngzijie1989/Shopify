@@ -20,8 +20,6 @@ Email: **usertest1@email.com**
 Password: **password1**
 
 Things left to do: 
-1) Responsiveness 
-2) Finally launch to a hosting platform
-3) Loading skeletion interface (to do tomorrow)
-4) carousel banner at home page
-5) Add search for homepage
+1) Finally launch to a hosting platform
+2) carousel banner at home page
+3) Add search for homepage

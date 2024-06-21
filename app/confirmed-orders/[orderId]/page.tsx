@@ -4,6 +4,12 @@ import { ConfirmedItemsType, ConfirmedOrderItemsType } from "@/app/lib/type";
 
 async function page({ params } : { params : { orderId: string }}) {
 
+  
+  const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+  // Add small delay so that can see shimmer haha
+  await delay(500); // 5000 milliseconds = 5 seconds
+
   const { orderId } = params;
   let confirmedOrderItems: ConfirmedItemsType[] = [];
 
@@ -13,7 +19,7 @@ async function page({ params } : { params : { orderId: string }}) {
   }
 
   return (
-    <div className="w-4/5 mx-auto mt-5 p-5">
+    <div className="w-full md:w-4/5 mx-auto mt-5 p-5">
       <h1 className="text-2xl">Order ID: <span className="font-bold">#{orderId}</span></h1>
       {confirmedOrderItems.map((item)=>{
         return <ConfirmedOrderItem key={item.id} item={item} />
