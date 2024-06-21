@@ -23,7 +23,7 @@ function HomeClient({products, session, favProductsIds}: {products: ProductType[
           <div className="flex">
             <SearchBar input={input} setInput={setInput} />
             <div className="flex items-center justify-center ms-2">
-              <SortBar />
+              <SortBar sort={sort} setSort={setSort}/>
             </div>
           </div>
         </div>
