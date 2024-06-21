@@ -16,3 +16,43 @@
 .cartImageConfirmed{
   height: 100%
 }
+
+.slideImages{
+  padding:10px;
+  height: 500px;
+  width: 100vw;
+}
+
+@media (max-width: 768px) {
+  .slideImages {
+    height: 400px;
+  }
+}
+
+@media (max-width: 640px) {
+  .slideImages {
+    height: 350px;
+  }
+}
+
+@media (max-width: 500px) {
+  .slideImages {
+    height: 300px;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(240, 240, 240, 0.5) 50%, rgba(0, 0, 0, 0.1) 100%);
+  background-size: 200% auto;
+  animation: shimmerAnimation 1.5s infinite;
+  border-radius: 8px;
+}
+
+@keyframes shimmerAnimation {
+  0% {
+    background-position: -200%;
+  }
+  100% {
+    background-position: 200%;
+  }
+}

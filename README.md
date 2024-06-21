@@ -21,5 +21,4 @@ Password: **password1**
 
 Things left to do: 
 1) Finally launch to a hosting platform
-2) carousel banner at home page
-3) Add search for homepage
+2) Add search for homepage

@@ -2,6 +2,8 @@ import { FavoritesType, ProductType } from "./lib/type";
 import { getAllProducts, getFavorites } from "./actions/actions";
 import ProductList from "./components/ProductList";
 import { auth } from "@/auth";
+import HomepageCarousel from "./components/SlideCarousel";
+import SlideCarousel from "./components/SlideCarousel";
 
 export async function Home() {
   const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
@@ -23,6 +25,9 @@ export async function Home() {
 
   return (
     <main className="mt-5">
+        <h1 className="font-bold text-2xl ms-2">Promotions</h1>
+        <SlideCarousel />
+        <h1 className="font-bold text-2xl ms-2 mt-4">Products</h1>
         <ProductList products={products} session={session} favProductsIds={favProductsIds} />
     </main>
   );
