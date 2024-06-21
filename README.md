@@ -21,5 +21,4 @@ Password: **password1**
 
 Things left to do: 
 1) Finally launch to a hosting platform
-2) Add search for homepage
 3) Add a sort
