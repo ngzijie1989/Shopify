@@ -5,10 +5,15 @@ import styles from "@/app/lib/css/login.module.css"
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
+import { useSearchParams } from "next/navigation"
+import LoginError from "./LoginError";
 
 function LoginWrapper() {
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
+  const params = useSearchParams()
+
+  const error: string | null = params.get('error')
 
   const handleSubmitGoogle = (event: any) => {
     event.preventDefault();
@@ -33,14 +38,14 @@ function LoginWrapper() {
           <div className="mb-3">
             <label className="flex flex-col w-full">
               Email
-              <input type="text" placeholder="JeffBezos@email.com" className="input input-bordered w-full" onChange={(e)=> setEmail(e.currentTarget.value)} />
+              <input required type="text" placeholder="JeffBezos@email.com" className="input input-bordered w-full" onChange={(e)=> setEmail(e.currentTarget.value)} />
             </label>
           </div>
 
           <div className="mb-5">
             <label className="flex flex-col w-full">
               Password
-              <input type="password"  className="input input-bordered w-full" onChange={(e)=> setPassword(e.currentTarget.value)}/>
+              <input required type="password"  className="input input-bordered w-full" onChange={(e)=> setPassword(e.currentTarget.value)}/>
             </label>
           </div>
 
@@ -53,6 +58,8 @@ function LoginWrapper() {
           <span className="hidden sm:block">
           &nbsp; Google Sign in</span>
         </button>
+
+        {!!error ? <LoginError errorMessage={error} /> : ""}
       </form>
     </div>
   )
