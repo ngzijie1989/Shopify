@@ -89,6 +89,14 @@ export type ConfirmedOrderType = {
   confirmedItems: ConfirmedItemsType[];
 }
 
+export type ConfirmedOrderSubmit = {
+  id: string;
+  userId: string | null;
+  totalPrice: number;
+  paymentMethod: string;
+  DeliverStatus: Delivery;
+}
+
 export type ConfirmedItemsType = {
   id: string;
   ConfirmedOrderId: string | null;

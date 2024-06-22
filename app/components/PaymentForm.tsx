@@ -77,7 +77,7 @@ function PaymentForm({items, totalPrice}: {items: CartItemsType[]; totalPrice: n
 
   return (
     <div>
-      <form className="bg-white rounded mb-4" onSubmit={handleSubmitPayment} >
+      <form className="rounded mb-4" onSubmit={handleSubmitPayment} >
       <div className="mb-4">
         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
           Payment Mode

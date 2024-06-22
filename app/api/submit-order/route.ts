@@ -1,6 +1,6 @@
 import prisma from "@/app/lib/prisma"
 import { NextResponse } from "next/server"
-import { ConfirmedOrderType, ConfirmedItemsType, CartItemsType } from "@/app/lib/type"
+import { ConfirmedOrderSubmit, CartItemsType } from "@/app/lib/type"
 
 export async function POST(info: any) {
   try {
@@ -8,7 +8,7 @@ export async function POST(info: any) {
     
     const userId = response.purchasedItems[0].userId
 
-    const updateOrder: ConfirmedOrderType = await prisma.confirmedOrder.create({
+    const updateOrder: ConfirmedOrderSubmit = await prisma.confirmedOrder.create({
       data: {
         userId: userId,
         totalPrice: response.totalPrice,
@@ -16,6 +16,8 @@ export async function POST(info: any) {
         DeliverStatus: "PENDING"
       }
     })
+
+    console.log(updateOrder)
 
     const orderItemsList: CartItemsType[] = response.purchasedItems
 

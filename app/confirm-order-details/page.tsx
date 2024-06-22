@@ -37,7 +37,7 @@ async function page() {
   }
   return (
     <div className="flex mt-4 w-5/6 mx-auto flex-col sm:flex-row">
-      <div className="me-5 w-full sm:w-1/2 ">
+      <div className="me-5 w-full sm:w-1/2 p-2 ">
         <h1 className="text-3xl font-bold mb-4">Payment Details</h1>
         <PaymentForm items={productsCart} totalPrice={totalPrice}/>
       </div>
