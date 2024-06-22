@@ -8,7 +8,7 @@ import SearchBar from "./components/SearchBar";
 import HomeClient from "./components/HomeClient";
 import { Suspense } from "react";
 
-export async function Page() {
+export default async function Home() {
 
   const products: ProductType[] = await getAllProducts()
   const session: any | null = await auth()
@@ -31,5 +31,3 @@ export async function Page() {
     </main>
   );
 }
-
-export default Page;
