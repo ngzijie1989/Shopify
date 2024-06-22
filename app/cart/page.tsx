@@ -34,7 +34,7 @@ async function page() {
   return (
     <div>
       {count !== 0 ? 
-      <div className="w-full mx-auto mt-5 sm:w-4/5 p-2">
+      <div className="w-11/12 mx-auto mt-5 sm:w-4/5 p-2">
         <div className="flex justify-between">
         <div>
         <h1 className="font-bold text-xl sm:text-3xl flex items-center">My Cart ({count})</h1>
