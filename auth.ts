@@ -55,7 +55,7 @@ const credentials = CredentialsProvider({
   }
 })
 
-const authConfig = {
+const authConfig: any = {
   providers: [credentials, Google],
   cookies: {
     secure: true
@@ -100,11 +100,11 @@ const authConfig = {
       }
     
     },
-    async redirect({ url }){
+    async redirect({ url }: {url: string}){
       if (url.includes("signin")) return "/"
       return url;
     },
-    async session({session, token}){
+    async session({session, token}: {session: any; token: any}){
       return token
     }
   }
