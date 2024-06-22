@@ -35,10 +35,26 @@ function page() {
       </p>
 
       <p className="text-lg mb-4">
-        To be very honest, this site was created to showcase to potential employers the skills i have developed throughout my journey.
-        Please feel free to go through the App and let me know what you think! 
+        Users can do the following tasks:
       </p>
 
+      <li className="text-lg mb-2">
+          Browse thrugh the selection of products through search or sort.
+        </li>
+
+        <li className="text-lg mb-2">
+          Add/delete/update items in the cart
+        </li>
+
+        <li className="text-lg mb-2">
+          Submit orders in the cart
+        </li>
+
+        <li className="text-lg mb-2">
+          View their purchased orders in a page for a quick overview
+        </li>
+
+      <br></br>
       <p className="text-lg mb-4">
         You may use this dummy account to log in to explore its functions
       </p>
