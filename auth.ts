@@ -42,7 +42,11 @@ const credentials = CredentialsProvider({
 
     const password = user.password
 
-    const passwordValid = await compare(credentials.password, password) //password can be empty
+    if (typeof credentials.password !== 'string' || typeof password !== "string") {
+      throw new Error('Invalid password format');
+    }
+
+    const passwordValid = await compare(credentials.password, password)
 
     if (!passwordValid){
       return null }
