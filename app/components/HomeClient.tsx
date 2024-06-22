@@ -45,19 +45,14 @@ function HomeClient({products, session, favProductsIds}: {products: ProductType[
   return (
     <div>
       <div className="w-full sm:w-11/12 mx-auto">
-        <div className="flex justify-between mx-4 mt-6">
-          <h1 className="font-bold text-2xl mt-4">Products</h1>
-          <div className="flex">
+          <h1 className="font-bold text-2xl m-4">Products</h1>
+          <div className="mx-4 flex justify-between mb-4">
             <SearchBar input={input} setInput={setInput} />
-            <div className="flex items-center justify-center ms-2">
-              <SortBar sort={sort} setSort={setSort}/>
-            </div>
+            <SortBar sort={sort} setSort={setSort}/>
           </div>
-        </div>
         {filteredAndSortedProducts.length > 0 ? <ProductList products={filteredAndSortedProducts} session={session} favProductsIds={favProductsIds} /> :
         <div className="flex justify-center w-full p-10"><p className="font-bold text-xl"><em>There are no items matching your search results. Please try again.</em></p></div>
         }
-        
       </div>
     </div>
   )

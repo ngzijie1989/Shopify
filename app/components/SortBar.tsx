@@ -10,7 +10,7 @@ function SortBar({sort, setSort}: {sort: string; setSort: (value: any)=> void}) 
     <div>
       <select
         onChange={handleSort}
-        className="block w-full h-12 px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="flex items-center mr-auto justify-end w-40 sm:w-48 md:w-60 h-12 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
       >
         <option value="">Sort By</option>
         <option value="high">Price (High to Low)</option>

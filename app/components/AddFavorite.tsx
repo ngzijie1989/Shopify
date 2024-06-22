@@ -11,22 +11,28 @@ function AddFavorite({id, session, favProductsIds}: {id: string; session: any, f
 
   const handleAddFavorite = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
-    const addFavorites = await AddToFavorites(id, session);
-    if (addFavorites === "deleted"){
-      toast.success("Item has been removed from favourites")
-      setFavorite(!favorite)
-      if (window.location.href.includes('/favorites')) {
-        window.location.href = `/favorites`
-      }
-    } else if (addFavorites === "added") {
-      toast.success("Item has been added into your favourites")
-      setFavorite(!favorite)
-      if (window.location.href.includes('/favorites')) {
-        window.location.href = `/favorites`
-      }
+
+    if (!session){
+      toast.error("You need to sign in before adding to Favorites")
     } else {
-      toast.error("There was an error. Please try again")
+        const addFavorites = await AddToFavorites(id, session);
+        if (addFavorites === "deleted"){
+          toast.success("Item has been removed from favourites")
+          setFavorite(!favorite)
+          if (window.location.href.includes('/favorites')) {
+            window.location.href = `/favorites`
+          }
+        } else if (addFavorites === "added") {
+          toast.success("Item has been added into your favourites")
+          setFavorite(!favorite)
+          if (window.location.href.includes('/favorites')) {
+            window.location.href = `/favorites`
+          }
+        } else {
+          toast.error("There was an error. Please try again")
+        }
     }
+
   }
 
   return (

@@ -19,5 +19,4 @@ You may use this dummy account to log in to explore its functions. Please do vis
 Email: **usertest1@email.com**
 Password: **password1**
 
-Things left to do: 
-1) Finally launch to a hosting platform
+

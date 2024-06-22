@@ -4,7 +4,7 @@ import Link from "next/link"
 
 function page() {
   return (
-    <div className={`max-w-5xl mx-auto px-4 py-8 ${styles.aboutContainer}`}>
+    <div className={`max-w-5xl mx-auto ${styles.aboutContainer}`}>
       <div>
       <h1 className="text-2xl font-bold mb-4">About Myself</h1>
         <img src="/zijie2.jpg" alt="zijie" className={styles.aboutImage} />
@@ -48,6 +48,10 @@ function page() {
 
         <li className="text-lg mb-2">
           Submit orders in the cart
+        </li>
+
+        <li className="text-lg mb-2">
+          Add to favorites
         </li>
 
         <li className="text-lg mb-2">

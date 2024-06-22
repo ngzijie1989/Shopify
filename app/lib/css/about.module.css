@@ -22,5 +22,6 @@
 
 .aboutContainer{
   text-justify: inter-word;
-  text-align: justify
+  text-align: justify;
+  padding: 20px 25px 20px 25px;
 }
