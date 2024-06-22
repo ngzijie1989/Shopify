@@ -407,6 +407,23 @@ export const getOrderItems = async (orderId: string) => {
   }
 };
 
+export const getUserProfile = async (userEmail: string) => {
+  try {
+
+    const user = await prisma.user.findFirst({
+      where: {
+        email: userEmail
+      }
+    })
+
+      return user
+
+  } catch (error) {
+    console.error("Error checking orderID:", error);
+    throw error;
+  }
+};
+
 
 
 

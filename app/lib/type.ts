@@ -4,7 +4,7 @@ export type UserType = {
   id: string;
   name: string;
   email: string;
-  provider: string;
+  provider: string | null;
 }
 
 export type ProductType = {
