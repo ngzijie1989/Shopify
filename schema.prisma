@@ -26,7 +26,7 @@ model Product {
   id             String   @id @default(auto()) @map("_id") @db.ObjectId //@map is specific to mongo db
   name           String
   price          Float
-  imageLink      String?
+  imageLink      String
   quantity       Int
   description    String?
   category       Category
@@ -70,8 +70,8 @@ model ConfirmedItem{
   id                String   @id @default(auto()) @map("_id") @db.ObjectId //@map is specific to mongo db
   ConfirmedOrder    ConfirmedOrder? @relation(fields: [ConfirmedOrderId], references: [id], onDelete: SetNull)
   ConfirmedOrderId  String? @db.ObjectId
-  product           Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
-  productId         String? @db.ObjectId
+  product           Product @relation(fields: [productId], references: [id])
+  productId         String @db.ObjectId
   Quantity          Int
   BoughtPrice       Float
 }

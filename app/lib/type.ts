@@ -11,7 +11,7 @@ export type ProductType = {
   id: string;
   name: string;
   price: number;
-  imageLink?: string;
+  imageLink: string;
   quantity: number;
   description?: string | null;
   category: Category;
