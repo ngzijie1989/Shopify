@@ -16,15 +16,11 @@ async function page() {
 
     if (userEmail){
       user = await getUserProfile(userEmail)
-      console.log(user)
     } else {
       redirect("/")
     }
   }
   
-
-
-  console.log(user)
 
   return (
     <div>

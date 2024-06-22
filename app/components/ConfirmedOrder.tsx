@@ -1,9 +1,8 @@
-import { ConfirmedItemsType, ConfirmedOrderType } from "../lib/type"
+import { ConfirmedItemsType, ConfirmedAllOrderType } from "../lib/type"
 import ConfirmedOrderItem from "./ConfirmedOrderItem"
 import Link from "next/link"
 
-function ConfirmedOrder({order}: {order : ConfirmedOrderType}) {
-  const items: ConfirmedItemsType[] = order.confirmedItems
+function ConfirmedOrder({order}: {order : ConfirmedAllOrderType}) {
 
   return (
     <div>

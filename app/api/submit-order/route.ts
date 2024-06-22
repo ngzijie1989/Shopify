@@ -17,8 +17,6 @@ export async function POST(info: any) {
       }
     })
 
-    console.log(updateOrder)
-
     const orderItemsList: CartItemsType[] = response.purchasedItems
 
     orderItemsList.forEach(async (orderItem: CartItemsType)=>{

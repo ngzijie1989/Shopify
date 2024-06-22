@@ -45,7 +45,7 @@ function PaymentForm({items, totalPrice}: {items: CartItemsType[]; totalPrice: n
         setError(false)
         const response = await fetch("/api/submit-order", options)
         const data = await response.json()
-        console.log(data.status)
+
         if (data.status === "complete"){
           router.push(`/confirmed-order-success/${data.id}`)
           toast.success("Transaction has been completed successfully!")

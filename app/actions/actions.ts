@@ -362,8 +362,6 @@ export const getConfirmedOrders = async (email: string) => {
         },
       });
 
-      console.log(confirmedOrders)
-
       if (confirmedOrders.length > 0){
         return {status: "orders", data: confirmedOrders}
       } else {

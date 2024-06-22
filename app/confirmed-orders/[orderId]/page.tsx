@@ -14,8 +14,6 @@ async function page({ params } : { params : { orderId: string }}) {
 
   const items: ConfirmedOrderItemsType = await getOrderItems(orderId);
 
-  console.log(items)
-
   if (items.status === "valid"){
     confirmedOrderItems = items.data
   }

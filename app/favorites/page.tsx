@@ -31,8 +31,6 @@ async function page() {
     }
   }
 
-  console.log(productsFavorited)
-
   return (
     <div>
       <main className="mt-5">
