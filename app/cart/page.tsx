@@ -12,11 +12,6 @@ async function page() {
   let count;
   let totalPrice: number = 0;
 
-  const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-
-  // Add small delay so that can see shimmer haha
-  await delay(500); // 5000 milliseconds = 5 seconds
-
   if (!session || !session.user) {
     redirect("/no-access")
   } else {

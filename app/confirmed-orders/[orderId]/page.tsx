@@ -4,11 +4,6 @@ import { ConfirmedItemsType, ConfirmedOrderItemsType ,ProductType } from "@/app/
 
 async function page({ params } : { params : { orderId: string }}) {
 
-  const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-
-  // Add small delay so that can see shimmer haha
-  await delay(500)
-
   const { orderId } = params;
   let confirmedOrderItems: ConfirmedItemsType[] = [];
 

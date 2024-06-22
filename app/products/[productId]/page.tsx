@@ -7,11 +7,6 @@ import { auth } from "@/auth"
 
 async function Page({params}: {params : { productId: string }}) { //use params to get the productID out
 
-  const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-
-  // Add small delay so that can see shimmer haha
-  await delay(2000); // 5000 milliseconds = 5 seconds
-
   const productId : string = params.productId
   const product: ProductType | null = await getProductInfo(productId)
   let checkUserAlreadyAddedItem: string | boolean = ""

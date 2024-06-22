@@ -10,11 +10,6 @@ async function page() {
   let productsFavorited: ProductType[] = []
   let favProductsIds: string[] = []
 
-  const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-
-  // Add small delay so that can see shimmer haha
-  await delay(200); // 5000 milliseconds = 5 seconds
-
   if (!session || !session.user) {
     redirect("/no-access")
   } else {
