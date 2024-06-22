@@ -10,10 +10,11 @@ import { getCartItems } from "../actions/actions";
 import { SiAboutdotme } from "react-icons/si";
 import { cookies } from "next/headers";
 import { getServerCookie, setServerCookie } from "../lib/utils/cookie";
+import { CartItemsType } from "../lib/type";
 
 async function NavBar() {
   const cookieStore = cookies();
-  let cartItems;
+  let cartItems: CartItemsType[] | boolean = [] ;
   let showToolTip = false;
 
   // async function setCook () {
