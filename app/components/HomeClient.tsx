@@ -3,17 +3,44 @@
 import SearchBar from "./SearchBar"
 import ProductList from "./ProductList"
 import { ProductType } from "../lib/type"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import SortBar from "./SortBar"
 
 function HomeClient({products, session, favProductsIds}: {products: ProductType[]; session: any; favProductsIds: string[]}) {
   const [input, setInput] = useState<string>("")
   const [sort, setSort] = useState<string>("")
+  const [filteredAndSortedProducts, setFilteredAndSortedProducts] = useState<ProductType[]>(products);
   
   const filteredProducts = input === "" ? 
   products :products.filter(product =>
     product.name.toLowerCase().includes(input.toLowerCase())
   );
+
+  useEffect(() => {
+
+    const filterAndSortProducts = () => {
+      let filteredProducts = [...products];
+
+      if (input !== "") {
+        filteredProducts = filteredProducts.filter(product =>
+          product.name.toLowerCase().includes(input.toLowerCase())
+        );
+      }
+
+
+      if (sort === "high") {
+        filteredProducts.sort((a, b) => b.price - a.price); 
+      } else if (sort === "low") {
+        filteredProducts.sort((a, b) => a.price - b.price); 
+      } else if (sort === "category") {
+        filteredProducts.sort((a, b) => a.category.localeCompare(b.category));
+      }
+
+      setFilteredAndSortedProducts(filteredProducts);
+    };
+
+    filterAndSortProducts();
+  }, [products, input, sort]);
 
   return (
     <div>
@@ -27,7 +54,10 @@ function HomeClient({products, session, favProductsIds}: {products: ProductType[
             </div>
           </div>
         </div>
-        <ProductList products={filteredProducts} session={session} favProductsIds={favProductsIds} />
+        {filteredAndSortedProducts.length > 0 ? <ProductList products={filteredAndSortedProducts} session={session} favProductsIds={favProductsIds} /> :
+        <div className="flex justify-center w-full p-10"><p className="font-bold text-xl"><em>There are no items matching your search results. Please try again.</em></p></div>
+        }
+        
       </div>
     </div>
   )

@@ -15,7 +15,7 @@
 
     return (
       <div>
-        <input type="text" placeholder="Search for a product" className="input input-bordered w-48 sm:w-60 md:w-80" onChange={handleSearchProduct} />
+        <input type="text" placeholder="Search for a product" className="input input-bordered w-36 sm:w-60 md:w-80" onChange={handleSearchProduct} />
       </div>
     )
   }
