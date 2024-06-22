@@ -24,3 +24,10 @@
   justify-content: center;
   height: calc(100vh - 64px )
 }
+
+.profileContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 64px )
+}
