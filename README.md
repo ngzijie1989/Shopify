@@ -10,16 +10,16 @@ Password: **password1**
 
 <h1 className="underline">About my App</h1>
 Main Page (has a carousel where promo materials can be added)
-![Image](/product list.JPG)
+![main page](https://github.com/ngzijie1989/Shopify/assets/152587020/84a60aa6-cdb7-466c-b170-8e87d6247115)
 
 Product page where users can go through the page and also utilize search and sort to narrow down their search
-![Image](/product list.JPG)
+![product List](https://github.com/ngzijie1989/Shopify/assets/152587020/75d85dbd-b87d-463e-8c98-188ee175d665)
 
 Viewing the product cart (Users can delete from cart, and also edit the quantity from the cart)
-![Image](/product cart.JPG)
+![product cart](https://github.com/ngzijie1989/Shopify/assets/152587020/59fb4dae-7ded-4b55-8132-0e3d12029c98)
 
 Viewing users confirmed orders
-![Image](/confirmed orders.JPG)
+![confirmed orders](https://github.com/ngzijie1989/Shopify/assets/152587020/1728318b-e4eb-4ac9-901e-4e0676fae2e0)
 
 <h1 className="underline">Tech Stack</h1>
 
