@@ -9,16 +9,17 @@ Email: **usertest1@email.com**
 Password: **password1**
 
 <h1 className="underline">About my App</h1>
-Main Page - has a carousel where promo materials can be added
+
+**Main Page - has a carousel where promo materials can be added**
 ![main page](https://github.com/ngzijie1989/Shopify/assets/152587020/fb46d967-8bc6-4de4-b7bc-a592c1de335d)
 
-Product page where users can go through the page and also utilize search and sort to narrow down their search
+**Product page where users can go through the page and also utilize search and sort to narrow down their search**
 ![product List](https://github.com/ngzijie1989/Shopify/assets/152587020/75d85dbd-b87d-463e-8c98-188ee175d665)
 
-Viewing the product cart (Users can delete from cart, and also edit the quantity from the cart)
+**Viewing the product cart (Users can delete from cart, and also edit the quantity from the cart)**
 ![product cart](https://github.com/ngzijie1989/Shopify/assets/152587020/59fb4dae-7ded-4b55-8132-0e3d12029c98)
 
-Viewing users confirmed orders
+**Viewing users confirmed orders**
 ![confirmed orders](https://github.com/ngzijie1989/Shopify/assets/152587020/1728318b-e4eb-4ac9-901e-4e0676fae2e0)
 
 <h1 className="underline">Tech Stack</h1>
