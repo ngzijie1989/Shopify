@@ -1,6 +1,25 @@
 Hi all, 
 
-Im currently working on an e-commerce like App to learn more on Typescript and also nextJS server actions.
+I created a demo E-commerce App whereby users can add/update/delete items from cart, confirm purchases and add to favorites.
+I used Typescript and nextJS server actions for this web App!
+
+You may use this dummy account to log in to explore its functions. Please do visit the about page in the website to know more about me!
+
+Email: **usertest1@email.com**
+Password: **password1**
+
+<h1 className="underline">About my App</h1>
+Main Page (has a carousel where promo materials can be added)
+![Image](/product list.JPG)
+
+Product page where users can go through the page and also utilize search and sort to narrow down their search
+![Image](/product list.JPG)
+
+Viewing the product cart (Users can delete from cart, and also edit the quantity from the cart)
+![Image](/product cart.JPG)
+
+Viewing users confirmed orders
+![Image](/confirmed orders.JPG)
 
 <h1 className="underline">Tech Stack</h1>
 
@@ -10,13 +29,8 @@ Im currently working on an e-commerce like App to learn more on Typescript and a
 
 **Prisma**: Prisma as the ORM relational mapping between MongoDB and my main application. Prisma is also good to add seed data and schema along with tables into my main App!
 
-**Typrscript**: Learning to use Typescript in this demo website. It helps to identify potential errors early on and save a lot of time in future as we should have already handled those exceptions that we may have missed out handling!
+**Typescript**: Learning to use Typescript in this demo website. It helps to identify potential errors early on and save a lot of time in future as we should have already handled those exceptions that we may have missed out handling!
 
 Feel free to check out the website!
-
-You may use this dummy account to log in to explore its functions. Please do visit the about page in the website to know more about me!
-
-Email: **usertest1@email.com**
-Password: **password1**
 
 
